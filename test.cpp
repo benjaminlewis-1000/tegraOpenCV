@@ -1,4 +1,3 @@
-#include <cv.h>
 #include <iostream>
 #include "opencv2/opencv.hpp"
 #include "opencv2/gpu/gpu.hpp"
@@ -12,6 +11,7 @@ int main(int argc, char** argv){
 	cout << cuda << endl;
 //	cout << "Num processors is " << cv::gpu::DeviceInfo::multiProcessorCount() << endl;
 //	cout << cv::gpu::DeviceInfo::isCompatible() << endl;
+	cout << "Initializing Cuda?\n";
 	cv::gpu::DeviceInfo info;
 	cout << info.multiProcessorCount() << endl;
 	cv::gpu::setDevice(0);
@@ -19,11 +19,23 @@ int main(int argc, char** argv){
 	
 	cv::Mat src_host = cv::imread("img.jpg", CV_LOAD_IMAGE_GRAYSCALE);
 	cv::gpu::GpuMat dst, src;
+	cout <<"Uploading\n";
 	src.upload(src_host);
 
+	cout << "threshold\n";
 	cv::gpu::threshold(src,dst, 128.0, 255.0, CV_THRESH_BINARY);
 
 	cv::Mat result_host(dst);
-	cv::imshow("Result", result_host);
-	cv::waitKey();
+	cout << "Obtained result. Now uploading again.\n";
+	cv::gpu::GpuMat d2, s2;
+	s2.upload(src_host);
+	cout << "Upload #2\n";
+	cv::gpu::threshold(s2,d2,128,255,CV_THRESH_BINARY);
+	cv::Mat rhost2(d2);
+	cout << "Threshold #2 done\n";
+
+	cv::Mat noGPUdst;
+	cv::threshold(src_host, noGPUdst, 128,255, CV_THRESH_BINARY);
+//	cv::imshow("Result", result_host);
+//	cv::waitKey();
 }

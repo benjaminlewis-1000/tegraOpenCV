@@ -6,3 +6,13 @@
 
 #IncludeRegexTransform: 
 
+/home/ubuntu/openCV_test/test.cpp
+iostream
+-
+opencv2/opencv.hpp
+/home/ubuntu/openCV_test/opencv2/opencv.hpp
+opencv2/gpu/gpu.hpp
+/home/ubuntu/openCV_test/opencv2/gpu/gpu.hpp
+sys/time.h
+-
+

@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/opencv_test
+CMAKE_SOURCE_DIR = /home/ubuntu/openCV_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/opencv_test
+CMAKE_BINARY_DIR = /home/ubuntu/openCV_test
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/test.dir/flags.make
 
 CMakeFiles/test.dir/test.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/test.cpp.o: test.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/openCV_test/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/test.dir/test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /home/ubuntu/opencv_test/test.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /home/ubuntu/openCV_test/test.cpp
 
 CMakeFiles/test.dir/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ubuntu/opencv_test/test.cpp > CMakeFiles/test.dir/test.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ubuntu/openCV_test/test.cpp > CMakeFiles/test.dir/test.cpp.i
 
 CMakeFiles/test.dir/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ubuntu/opencv_test/test.cpp -o CMakeFiles/test.dir/test.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ubuntu/openCV_test/test.cpp -o CMakeFiles/test.dir/test.cpp.s
 
 CMakeFiles/test.dir/test.cpp.o.requires:
 .PHONY : CMakeFiles/test.dir/test.cpp.o.requires
@@ -103,7 +103,7 @@ test: /usr/lib/libopencv_features2d.so.2.4.10
 test: /usr/lib/libopencv_core.so.2.4.10
 test: /usr/lib/libopencv_contrib.so.2.4.10
 test: /usr/lib/libopencv_calib3d.so.2.4.10
-test: /usr/local/cuda-6.5/lib/libcudart.so
+test: /usr/local/cuda/lib/libcudart.so
 test: /usr/lib/libopencv_tegra.so.2.4.10
 test: /usr/lib/libopencv_stitching.so.2.4.10
 test: /usr/lib/libopencv_gpu.so.2.4.10
@@ -134,6 +134,6 @@ CMakeFiles/test.dir/clean:
 .PHONY : CMakeFiles/test.dir/clean
 
 CMakeFiles/test.dir/depend:
-	cd /home/ubuntu/opencv_test && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/openCV_test && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/openCV_test /home/ubuntu/openCV_test /home/ubuntu/openCV_test /home/ubuntu/openCV_test /home/ubuntu/openCV_test/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test.dir/depend
 

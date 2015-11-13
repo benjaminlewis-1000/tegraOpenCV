@@ -1,2 +1,2 @@
-/home/ubuntu/opencv_test/CMakeFiles/cam.dir
-/home/ubuntu/opencv_test/CMakeFiles/test.dir
+/home/ubuntu/openCV_test/CMakeFiles/cam.dir
+/home/ubuntu/openCV_test/CMakeFiles/test.dir

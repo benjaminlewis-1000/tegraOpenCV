@@ -1,0 +1,8 @@
+Getting the Jetson up and running:
+
+-Flash system with Jetpack
+-Install Grinch kernal (for wifi and for ROS, at least)
+-Copy libs from /usr/local/cuda-*.*/lib to /usr/lib
+-Get the directory of armhf ueye drivers
+-rsync the drivers to their proper locations
+

@@ -99,6 +99,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named cam
+
+# Build rule for target.
+cam: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cam
+.PHONY : cam
+
+# fast build rule for target.
+cam/fast:
+	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/build
+.PHONY : cam/fast
+
+#=============================================================================
 # Target rules for targets named test
 
 # Build rule for target.
@@ -110,6 +123,30 @@ test: cmake_check_build_system
 test/fast:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
+
+camtest.o: camtest.cpp.o
+.PHONY : camtest.o
+
+# target to build an object file
+camtest.cpp.o:
+	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/camtest.cpp.o
+.PHONY : camtest.cpp.o
+
+camtest.i: camtest.cpp.i
+.PHONY : camtest.i
+
+# target to preprocess a source file
+camtest.cpp.i:
+	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/camtest.cpp.i
+.PHONY : camtest.cpp.i
+
+camtest.s: camtest.cpp.s
+.PHONY : camtest.s
+
+# target to generate assembly for a file
+camtest.cpp.s:
+	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/camtest.cpp.s
+.PHONY : camtest.cpp.s
 
 test.o: test.cpp.o
 .PHONY : test.o
@@ -141,9 +178,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... cam"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... camtest.o"
+	@echo "... camtest.i"
+	@echo "... camtest.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

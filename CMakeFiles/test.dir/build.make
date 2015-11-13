@@ -81,6 +81,43 @@ test_EXTERNAL_OBJECTS =
 
 test: CMakeFiles/test.dir/test.cpp.o
 test: CMakeFiles/test.dir/build.make
+test: /usr/lib/libopencv_vstab.so.2.4.10
+test: /usr/lib/libopencv_tegra.so.2.4.10
+test: /usr/lib/libopencv_imuvstab.so.2.4.10
+test: /usr/lib/libopencv_facedetect.so.2.4.10
+test: /usr/lib/libopencv_esm_panorama.so.2.4.10
+test: /usr/lib/libopencv_videostab.so.2.4.10
+test: /usr/lib/libopencv_video.so.2.4.10
+test: /usr/lib/libopencv_ts.a
+test: /usr/lib/libopencv_superres.so.2.4.10
+test: /usr/lib/libopencv_stitching.so.2.4.10
+test: /usr/lib/libopencv_photo.so.2.4.10
+test: /usr/lib/libopencv_objdetect.so.2.4.10
+test: /usr/lib/libopencv_ml.so.2.4.10
+test: /usr/lib/libopencv_legacy.so.2.4.10
+test: /usr/lib/libopencv_imgproc.so.2.4.10
+test: /usr/lib/libopencv_highgui.so.2.4.10
+test: /usr/lib/libopencv_gpu.so.2.4.10
+test: /usr/lib/libopencv_flann.so.2.4.10
+test: /usr/lib/libopencv_features2d.so.2.4.10
+test: /usr/lib/libopencv_core.so.2.4.10
+test: /usr/lib/libopencv_contrib.so.2.4.10
+test: /usr/lib/libopencv_calib3d.so.2.4.10
+test: /usr/local/cuda-6.5/lib/libcudart.so
+test: /usr/lib/libopencv_tegra.so.2.4.10
+test: /usr/lib/libopencv_stitching.so.2.4.10
+test: /usr/lib/libopencv_gpu.so.2.4.10
+test: /usr/lib/libopencv_photo.so.2.4.10
+test: /usr/lib/libopencv_objdetect.so.2.4.10
+test: /usr/lib/libopencv_legacy.so.2.4.10
+test: /usr/lib/libopencv_video.so.2.4.10
+test: /usr/lib/libopencv_ml.so.2.4.10
+test: /usr/lib/libopencv_calib3d.so.2.4.10
+test: /usr/lib/libopencv_features2d.so.2.4.10
+test: /usr/lib/libopencv_highgui.so.2.4.10
+test: /usr/lib/libopencv_imgproc.so.2.4.10
+test: /usr/lib/libopencv_flann.so.2.4.10
+test: /usr/lib/libopencv_core.so.2.4.10
 test: CMakeFiles/test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)

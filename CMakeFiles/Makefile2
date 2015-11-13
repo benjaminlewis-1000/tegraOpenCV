@@ -53,13 +53,48 @@ CMAKE_SOURCE_DIR = /home/ubuntu/opencv_test
 CMAKE_BINARY_DIR = /home/ubuntu/opencv_test
 
 #=============================================================================
+# Target rules for target CMakeFiles/cam.dir
+
+# All Build rule for target.
+CMakeFiles/cam.dir/all:
+	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/depend
+	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  1
+	@echo "Built target cam"
+.PHONY : CMakeFiles/cam.dir/all
+
+# Include target in all.
+all: CMakeFiles/cam.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/cam.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cam.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 0
+.PHONY : CMakeFiles/cam.dir/rule
+
+# Convenience name for target.
+cam: CMakeFiles/cam.dir/rule
+.PHONY : cam
+
+# clean rule for target.
+CMakeFiles/cam.dir/clean:
+	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/clean
+.PHONY : CMakeFiles/cam.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/cam.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test.dir
 
 # All Build rule for target.
 CMakeFiles/test.dir/all:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/depend
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  2
 	@echo "Built target test"
 .PHONY : CMakeFiles/test.dir/all
 

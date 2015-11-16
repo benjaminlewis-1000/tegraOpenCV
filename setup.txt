@@ -7,3 +7,7 @@ Getting the Jetson up and running:
 -rsync the drivers to their proper locations
 -sudo apt-get install libqt4-qt3support to get ueyedemo running
 -Restart the computer so that ueyeusb daemon can start
+-Install ros for ARM - seems OK, I think...
+-apt-get install ros-indigo-image-transport
+-apt-get install ros-indigo-camera-calibration-parsers
+-apt-get install ros-indigo-cv-bridge

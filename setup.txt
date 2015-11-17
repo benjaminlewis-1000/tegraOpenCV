@@ -11,3 +11,13 @@ Getting the Jetson up and running:
 -apt-get install ros-indigo-image-transport
 -apt-get install ros-indigo-camera-calibration-parsers
 -apt-get install ros-indigo-cv-bridge
+-sudo apt-get install ros-indigo-tf
+-Run ros_packages.sh in relNavScripts/installation
+-apt-get install ros-indigo-joy
+-apt-get install ros-indigo-tf-conversions
+-apt-get install ros-indigo-image-geometry
+-apt-get install ros-indigo-eigen-conversions
+-Install scripts in dependencies 
+	-libraries_install.sh
+	-Make homest and levmar (may not need anymore)
+	-database_install.sh

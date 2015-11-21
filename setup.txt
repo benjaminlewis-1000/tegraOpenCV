@@ -4,6 +4,9 @@ Getting the Jetson up and running:
 	-Might need to push CUDA stuff: Use this website https://devtalk.nvidia.com/default/topic/838813/unable-to-push-cuda-opencv-to-jetson-tk1/
 -Install Grinch kernal (for wifi and for ROS, at least)
 	-http://jetsonhacks.com/2015/05/26/install-grinch-kernel-for-l4t-21-3-on-nvidia-jetson-tk1/
+-Compile OpenCV 2.4.11 (not 9 as on the Jetson website) with CUDA support. 
+	-You can test out the OpenCV install with the instructions on that website 
+	-http://elinux.org/Jetson/Installing_OpenCV
 -(Copy libs from /usr/local/cuda-*.*/lib to /usr/lib)
 -Get the directory of armhf ueye drivers
 -rsync the drivers to their proper locations

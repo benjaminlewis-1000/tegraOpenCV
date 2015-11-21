@@ -47,7 +47,7 @@ int main(int argc, char** argv){
 		VideoCapture capture(argv[1]);
 		if (!capture.isOpened() )
 			throw "Error when opening video file.\n";
-		cout << "Start loop GPU\n";
+		cout << "Start loop\n";
 		for ( ; ; ){
 			capture >> frame;
 			if (frame.empty() )

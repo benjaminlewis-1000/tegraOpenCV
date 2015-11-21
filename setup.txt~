@@ -1,7 +1,9 @@
 Getting the Jetson up and running:
 
 -Flash system with Jetpack
+	-Might need to push CUDA stuff: Use this website https://devtalk.nvidia.com/default/topic/838813/unable-to-push-cuda-opencv-to-jetson-tk1/
 -Install Grinch kernal (for wifi and for ROS, at least)
+	-http://jetsonhacks.com/2015/05/26/install-grinch-kernel-for-l4t-21-3-on-nvidia-jetson-tk1/
 -Copy libs from /usr/local/cuda-*.*/lib to /usr/lib
 -Get the directory of armhf ueye drivers
 -rsync the drivers to their proper locations

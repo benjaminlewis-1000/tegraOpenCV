@@ -1,2 +1,3 @@
-/home/ubuntu/openCV_test/CMakeFiles/cam.dir
-/home/ubuntu/openCV_test/CMakeFiles/test.dir
+/home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/bench.dir
+/home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/cam.dir
+/home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/test.dir

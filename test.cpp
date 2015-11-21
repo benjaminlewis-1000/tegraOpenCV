@@ -2,6 +2,7 @@
 #include "opencv2/opencv.hpp"
 #include "opencv2/gpu/gpu.hpp"
 #include <sys/time.h>
+#include <opencv2/nonfree/nonfree.hpp>
 
 //using namespace cv::gpu;
 //using namespace cv;

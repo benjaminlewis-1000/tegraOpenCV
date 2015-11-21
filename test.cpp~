@@ -37,7 +37,7 @@ int main(int argc, char** argv){
              gettimeofday(&tim, NULL);
              double t1=tim.tv_sec+(tim.tv_usec/1000000.0);
 	s2.upload(src_host);
-for (int i = 0; i < 10000; i++){
+for (int i = 0; i < 1000; i++){
 	cv::gpu::threshold(s2,d2,128,255,CV_THRESH_BINARY);
 }
              gettimeofday(&tim, NULL);
@@ -50,7 +50,7 @@ for (int i = 0; i < 10000; i++){
 	cv::Mat noGPUdst;
              gettimeofday(&tim, NULL);
              double t3=tim.tv_sec+(tim.tv_usec/1000000.0);
-for (int i = 0; i < 10000; i++)
+for (int i = 0; i < 1000; i++)
 	cv::threshold(src_host, noGPUdst, 128,255, CV_THRESH_BINARY);
 
              gettimeofday(&tim, NULL);

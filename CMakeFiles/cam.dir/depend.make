@@ -26,6 +26,8 @@ CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/imgproc/imgproc.hpp
 CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/imgproc/imgproc_c.h
 CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/imgproc/types_c.h
 CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/ml/ml.hpp
+CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/nonfree/features2d.hpp
+CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/nonfree/nonfree.hpp
 CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/objdetect/objdetect.hpp
 CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/opencv.hpp
 CMakeFiles/cam.dir/camtest.cpp.o: /usr/local/include/opencv2/photo/photo.hpp

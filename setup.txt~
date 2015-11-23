@@ -9,6 +9,10 @@ Getting the Jetson up and running:
 	-You can test out the OpenCV install with the instructions on that website 
 	-http://elinux.org/Jetson/Installing_OpenCV
 -(Copy libs from /usr/local/cuda-*.*/lib to /usr/lib)
+	-Create the following symlinks (may need to adjust directories)
+	-sudo ln -s /usr/local/cuda-6.5/lib/libcudart.so /usr/local/lib
+	-sudo ln -s /usr/local/cuda-6.5/lib/libcufft.so /usr/local/lib
+	-sudo ln -s /usr/local/cuda-6.5/lib/libnpp*.so /usr/local/lib
 -Get the directory of armhf ueye drivers
 -rsync the drivers to their proper locations
 -sudo apt-get install libqt4-qt3support to get ueyedemo running

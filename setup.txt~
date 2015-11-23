@@ -6,6 +6,7 @@ Getting the Jetson up and running:
 	-http://jetsonhacks.com/2015/05/26/install-grinch-kernel-for-l4t-21-3-on-nvidia-jetson-tk1/
 	-Restart the computer after that.
 -Compile OpenCV 2.4.11 (not 9 as on the Jetson website) with CUDA support. 
+	-This should be configured on by default, but make sure the nonfree module is built as well. 
 	-You can test out the OpenCV install with the instructions on that website 
 	-http://elinux.org/Jetson/Installing_OpenCV
 -(Copy libs from /usr/local/cuda-*.*/lib to /usr/lib)

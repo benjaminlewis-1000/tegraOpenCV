@@ -48,6 +48,7 @@ int main(int argc, char** argv){
 		double total = 0.0;
 		double max = 0.0;
 		double detector_total = 0.0;
+		double extractor_total = 0.0;
 		double min = 100.0;
 		bool started = false;
 		int numFrames = 0;
@@ -71,14 +72,17 @@ int main(int argc, char** argv){
 			gpu::GpuMat kps, src;
 			src.upload(frame);
 			gpuFastDetector(src, kps, kps);
-		//	surf(src, src, kps, descriptors1GPU, true);
+			double detector_end = time(&tim);
+			surf(src, src, kps, descriptors1GPU, true);
+			double extractor_end = time(&tim);
 		//	gpuFastDetector.downloadKeypoints(kps, first_keypoints);
 		//	surf.uploadKeypoints(first_keypoints, kps);
 //			surf(src, keypoints1GPU, descriptors1GPU);
-			double detector_end = time(&tim);
 			double end = time(&tim);
 			double elapsed = end - start;
 			double detector_time = detector_end - start;
+			double extractor_time = extractor_end - detector_end;
+			cout << "extract: " << extractor_time << ", ";
 			cout << ii << " elapsed = " << elapsed << endl;
 			if (elapsed > max){
 				max = elapsed;
@@ -88,12 +92,13 @@ int main(int argc, char** argv){
 			}
 			total += elapsed;
 			detector_total += detector_time;
+			extractor_total += extractor_time;
 			numFrames++;
 			
 		}
 		cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " 
 			<< total / numFrames << " Detector_only avg: " << detector_total / numFrames
-			<< endl;
+			<< " Extractor_only avg: " << extractor_total / numFrames<< endl;
 	}
 #endif
 
@@ -104,6 +109,7 @@ int main(int argc, char** argv){
 	for (int i = 0; i < 1; i++){
 		double total = 0.0;
 		double detector_total = 0.0;
+		double extractor_total = 0.0;
 		double max = 0.0;
 		double min = 100.0;
 		bool started = false;
@@ -125,7 +131,8 @@ int main(int argc, char** argv){
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
 			detector.detect(frame, keypoints);
 			double detector_end = time(&tim);
-			extractor.compute(frame, keypoints, descriptors);  
+			extractor.compute(frame, keypoints, descriptors); 
+			double extractor_end = time(&tim);
 			if (!started){
 				started = true;
 				first_keypoints = keypoints;
@@ -164,6 +171,7 @@ int main(int argc, char** argv){
 				double end = time(&tim);	
 				double elapsed = end - start;
 				double detector_time = detector_end - start;
+				double extractor_time = extractor_end - detector_end;
 				cout << "Elapsed = " << elapsed << endl;
 				if (elapsed > max){
 					max = elapsed;
@@ -173,12 +181,13 @@ int main(int argc, char** argv){
 				}
 				total += elapsed;
 				detector_total += detector_time;
+				extractor_total += extractor_time;
 				numFrames++;
 			}
 		}
 		cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " 
 			<< total / numFrames << " Detector_only avg: " << detector_total / numFrames
-			<< endl;
+			<< " Extractor_only avg: " << extractor_total / numFrames<< endl;
 	}
 #endif
 }

@@ -3,10 +3,12 @@
 #include <sys/time.h>
 #include <opencv2/nonfree/nonfree.hpp>
 
-#define GPU 0
+#define GPU 1
+#define CPU 0
 
 #if GPU
 	#include "opencv2/gpu/gpu.hpp"
+	#include "opencv2/nonfree/gpu.hpp"
 	//using namespace cv::gpu;
 #endif
 
@@ -26,50 +28,82 @@ int main(int argc, char** argv){
 	}
 	
 	timeval tim;
-	int thresh = 5;
+	int thresh = 5.0;
+	Mat frame;
 	
 #if GPU
 	cout << "Initializing Cuda\n";
 	cv::gpu::DeviceInfo info;
 	cv::gpu::setDevice(0);
-	gpu::FAST_GPU d2(thresh);
-#endif
+	gpu::FAST_GPU gpuFastDetector(thresh);
+	gpu::SURF_GPU surf(thresh);
+	
+	cv::Mat src_host = cv::imread("city_1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+	cv::gpu::GpuMat dst, src;
+	src.upload(src_host);
+	cv::gpu::threshold(src,dst, 128.0, 255.0, CV_THRESH_BINARY);
 
-	FastFeatureDetector detector(thresh);
-	SurfDescriptorExtractor extractor; 
-	
-	Mat frame;
-	
-#if GPU
+//TODO: Decide where to put the start timer.
 	for (int i = 0; i < 1; i++){
 		double total = 0.0;
 		double max = 0.0;
+		double detector_total = 0.0;
+		double min = 100.0;
+		bool started = false;
+		int numFrames = 0;
 		VideoCapture capture(argv[1]);
 		if (!capture.isOpened() )
 			throw "Error when opening video file.\n";
 		cout << "Start loop GPU\n";
+
+	    gpu::GpuMat keypoints1GPU, keypoints2GPU;
+	    gpu::GpuMat descriptors1GPU, descriptors2GPU;
+		gpu::GpuMat descriptors, descriptors_keyframe; // Have to be in scope
+		vector<KeyPoint> keypoints, first_keypoints;
+		int ii = 0;
 		for ( ; ; ){
+			ii++;
 			capture >> frame;
 			if (frame.empty() )
 				break;
+			double start = time(&tim);
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
 			gpu::GpuMat kps, src;
 			src.upload(frame);
-			double start = time(&tim);
-			d2(src, kps, kps);
+			gpuFastDetector(src, kps, kps);
+		//	surf(src, src, kps, descriptors1GPU, true);
+		//	gpuFastDetector.downloadKeypoints(kps, first_keypoints);
+		//	surf.uploadKeypoints(first_keypoints, kps);
+//			surf(src, keypoints1GPU, descriptors1GPU);
+			double detector_end = time(&tim);
 			double end = time(&tim);
 			double elapsed = end - start;
-			if (elapsed > max)
+			double detector_time = detector_end - start;
+			cout << ii << " elapsed = " << elapsed << endl;
+			if (elapsed > max){
 				max = elapsed;
+			}
+			if (elapsed < min){
+				min = elapsed;
+			}
 			total += elapsed;
+			detector_total += detector_time;
+			numFrames++;
 			
 		}
-		cout << "Total: " << total << " Max: " << max << endl;
+		cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " 
+			<< total / numFrames << " Detector_only time: " << detector_total / numFrames
+			<< endl;
 	}
 #endif
 
+#if(CPU)
+	FastFeatureDetector detector(thresh);
+	SurfDescriptorExtractor extractor; 
+
 	for (int i = 0; i < 1; i++){
 		double total = 0.0;
+		double detector_total = 0.0;
 		double max = 0.0;
 		double min = 100.0;
 		bool started = false;
@@ -84,12 +118,13 @@ int main(int argc, char** argv){
 		Mat descriptors, descriptors_keyframe; // Have to be in scope
 		vector<KeyPoint> keypoints, first_keypoints;
 		for ( ; ; ){
-			double start = time(&tim);
 			capture >> frame;
 			if (frame.empty() )
 				break;
+			double start = time(&tim);
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
 			detector.detect(frame, keypoints);
+			double detector_end = time(&tim);
 			extractor.compute(frame, keypoints, descriptors);  
 			if (!started){
 				started = true;
@@ -128,6 +163,7 @@ int main(int argc, char** argv){
 				}
 				double end = time(&tim);	
 				double elapsed = end - start;
+				double detector_time = detector_end - start;
 				cout << "Elapsed = " << elapsed << endl;
 				if (elapsed > max){
 					max = elapsed;
@@ -136,9 +172,13 @@ int main(int argc, char** argv){
 					min = elapsed;
 				}
 				total += elapsed;
+				detector_total += detector_time;
 				numFrames++;
 			}
 		}
-		cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " << total / numFrames << endl;
+		cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " 
+			<< total / numFrames << " Detector_only time: " << detector_total / numFrames
+			<< endl;
 	}
+#endif
 }

@@ -6,7 +6,6 @@ add_executable( cam camtest.cpp)
 add_executable( bench benchmark.cpp)
 
 find_package(OpenCV REQUIRED)
-find_package(CUDA REQUIRED)
 #	set (CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /usr/local/cuda-6.5/lib)
 
 	#link_directories(/usr/local/cuda-6.5/lib)

@@ -3,6 +3,8 @@
 #include <sys/time.h>
 #include <opencv2/nonfree/nonfree.hpp>
 
+//#include "surf.cu"
+
 #define GPU 1
 #define CPU 0
 
@@ -14,6 +16,8 @@
 
 using namespace cv;
 using namespace std;
+
+void ensureSizeIsEnough(int rows, int cols, int type, cv::gpu::GpuMat& m);
 
 inline double time(timeval *tim){
 	gettimeofday(tim, NULL);
@@ -36,12 +40,14 @@ int main(int argc, char** argv){
 	cv::gpu::DeviceInfo info;
 	cv::gpu::setDevice(0);
 	gpu::FAST_GPU gpuFastDetector(thresh);
-	gpu::SURF_GPU surf(thresh);
-	
-	cv::Mat src_host = cv::imread("city_1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-	cv::gpu::GpuMat dst, src;
-	src.upload(src_host);
-	cv::gpu::threshold(src,dst, 128.0, 255.0, CV_THRESH_BINARY);
+	gpu::SURF_GPU surf(thresh, 4, 2, true, 0.01f, false);
+		
+/*	cv::Mat src_host = cv::imread("city_1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+	cv::gpu::GpuMat dst1, src1;
+	src1.upload(src_host);
+	cv::gpu::threshold(src1,dst1, 128.0, 255.0, CV_THRESH_BINARY);
+	src1.release();
+	dst1.release();*/
 
 //TODO: Decide where to put the start timer.
 	for (int i = 0; i < 1; i++){
@@ -57,24 +63,50 @@ int main(int argc, char** argv){
 			throw "Error when opening video file.\n";
 		cout << "Start loop GPU\n";
 
-	    gpu::GpuMat keypoints1GPU, keypoints2GPU;
-	    gpu::GpuMat descriptors1GPU, descriptors2GPU;
-		gpu::GpuMat descriptors, descriptors_keyframe; // Have to be in scope
+//	    gpu::GpuMat keypoints1GPU, keypoints2GPU;
+	//	gpu::GpuMat descriptors; //, descriptors_keyframe; // Have to be in scope
 		vector<KeyPoint> keypoints, first_keypoints;
+		vector<float> test;
 		int ii = 0;
 		for ( ; ; ){
+			cout << "Start surf " << endl;
 			ii++;
 			capture >> frame;
-			if (frame.empty() )
+			if (frame.empty() ){
+				cout << " Break\n";
 				break;
+			}
 			double start = time(&tim);
+			cout << "0\n";
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
-			gpu::GpuMat kps, src;
+			cout << "1\n";
+			gpu::GpuMat kps, src, descriptors1GPU, empty;
 			src.upload(frame);
+			cout << "2\n";
 			gpuFastDetector(src, kps, kps);
+			cout << "3\n";
 			double detector_end = time(&tim);
-			surf(src, src, kps, descriptors1GPU, true);
+			
+			gpu::GpuMat descriptors;
+			const int nFeatures = kps.cols;
+			::cv::gpu::compute_descriptors_gpu(descriptors, kps.ptr<float>(gpu::SURF_GPU::X_ROW), kps.ptr<float>(gpu::SURF_GPU::Y_ROW),
+                    kps.ptr<float>(gpu::SURF_GPU::SIZE_ROW), kps.ptr<float>(gpu::SURF_GPU::ANGLE_ROW), nFeatures);
+			
+		/*	 void computeDescriptors(const GpuMat& keypoints, GpuMat& descriptors, int descriptorSize)
+        {
+            const int nFeatures = keypoints.cols;
+            if (nFeatures > 0)
+            {
+                ensureSizeIsEnough(nFeatures, descriptorSize, CV_32F, descriptors);
+                compute_descriptors_gpu(descriptors, keypoints.ptr<float>(SURF_GPU::X_ROW), keypoints.ptr<float>(SURF_GPU::Y_ROW),
+                    keypoints.ptr<float>(SURF_GPU::SIZE_ROW), keypoints.ptr<float>(SURF_GPU::ANGLE_ROW), nFeatures);
+            }
+        }*/
+			
+			surf(src, empty, kps, descriptors1GPU, true);
+			cout << "End surf " << endl;
 			double extractor_end = time(&tim);
+			cout << "GPU descriptors size is " << descriptors1GPU.cols << " " <<  descriptors1GPU.rows << endl;
 		//	gpuFastDetector.downloadKeypoints(kps, first_keypoints);
 		//	surf.uploadKeypoints(first_keypoints, kps);
 //			surf(src, keypoints1GPU, descriptors1GPU);
@@ -82,7 +114,7 @@ int main(int argc, char** argv){
 			double elapsed = end - start;
 			double detector_time = detector_end - start;
 			double extractor_time = extractor_end - detector_end;
-			cout << "extract: " << extractor_time ;
+			cout << "extract: " << extractor_time << ", ";
 			cout << ii << " elapsed = " << elapsed << endl;
 			if (elapsed > max){
 				max = elapsed;
@@ -94,6 +126,9 @@ int main(int argc, char** argv){
 			detector_total += detector_time;
 			extractor_total += extractor_time;
 			numFrames++;
+			src.release(); // Release the memory for the GPU.
+			kps.release();
+		//	descriptors1GPU.release();
 			
 		}
 		cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " 
@@ -137,9 +172,6 @@ int main(int argc, char** argv){
 				started = true;
 				first_keypoints = keypoints;
 				descriptors.copyTo(descriptors_keyframe);
-				vector< vector< DMatch > > doubleMatches;
-				BFMatcher matcher;
-				matcher.knnMatch( descriptors, descriptors, doubleMatches, 2 );
 			}else{ // BF Matching
 				vector< vector< DMatch > > doubleMatches;
 				vector< DMatch > matches;
@@ -190,4 +222,32 @@ int main(int argc, char** argv){
 			<< " Extractor_only avg: " << extractor_total / numFrames<< endl;
 	}
 #endif
+
+	return 0;
+}
+
+
+void ensureSizeIsEnough(int rows, int cols, int type, cv::gpu::GpuMat& m)
+{
+    if (m.empty() || m.type() != type || m.data != m.datastart)
+        m.create(rows, cols, type);
+    else
+    {
+        const size_t esz = m.elemSize();
+        const ptrdiff_t delta2 = m.dataend - m.datastart;
+
+        const size_t minstep = m.cols * esz;
+
+        Size wholeSize;
+        wholeSize.height = std::max(static_cast<int>((delta2 - minstep) / m.step + 1), m.rows);
+        wholeSize.width = std::max(static_cast<int>((delta2 - m.step * (wholeSize.height - 1)) / esz), m.cols);
+
+        if (wholeSize.height < rows || wholeSize.width < cols)
+            m.create(rows, cols, type);
+        else
+        {
+            m.cols = cols;
+            m.rows = rows;
+        }
+    }
 }

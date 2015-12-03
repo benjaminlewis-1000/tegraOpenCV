@@ -128,6 +128,19 @@ cam/fast:
 .PHONY : cam/fast
 
 #=============================================================================
+# Target rules for targets named gputest
+
+# Build rule for target.
+gputest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gputest
+.PHONY : gputest
+
+# fast build rule for target.
+gputest/fast:
+	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/build
+.PHONY : gputest/fast
+
+#=============================================================================
 # Target rules for targets named test
 
 # Build rule for target.
@@ -188,6 +201,30 @@ camtest.cpp.s:
 	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/camtest.cpp.s
 .PHONY : camtest.cpp.s
 
+gputest.o: gputest.cpp.o
+.PHONY : gputest.o
+
+# target to build an object file
+gputest.cpp.o:
+	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/gputest.cpp.o
+.PHONY : gputest.cpp.o
+
+gputest.i: gputest.cpp.i
+.PHONY : gputest.i
+
+# target to preprocess a source file
+gputest.cpp.i:
+	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/gputest.cpp.i
+.PHONY : gputest.cpp.i
+
+gputest.s: gputest.cpp.s
+.PHONY : gputest.s
+
+# target to generate assembly for a file
+gputest.cpp.s:
+	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/gputest.cpp.s
+.PHONY : gputest.cpp.s
+
 test.o: test.cpp.o
 .PHONY : test.o
 
@@ -221,6 +258,7 @@ help:
 	@echo "... bench"
 	@echo "... cam"
 	@echo "... edit_cache"
+	@echo "... gputest"
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... benchmark.o"
@@ -229,6 +267,9 @@ help:
 	@echo "... camtest.o"
 	@echo "... camtest.i"
 	@echo "... camtest.s"
+	@echo "... gputest.o"
+	@echo "... gputest.i"
+	@echo "... gputest.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

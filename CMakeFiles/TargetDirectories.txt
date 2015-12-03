@@ -1,3 +1,4 @@
 /home/ubuntu/opencv_test/CMakeFiles/bench.dir
 /home/ubuntu/opencv_test/CMakeFiles/cam.dir
+/home/ubuntu/opencv_test/CMakeFiles/gputest.dir
 /home/ubuntu/opencv_test/CMakeFiles/test.dir

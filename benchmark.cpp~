@@ -5,8 +5,8 @@
 
 //#include "surf.cu"
 
-#define GPU 0
-#define CPU 1
+#define GPU 1
+#define CPU !GPU
 
 #if GPU
 	#include "opencv2/gpu/gpu.hpp"
@@ -32,7 +32,7 @@ int main(int argc, char** argv){
 	}
 	
 	timeval tim;
-	int thresh = 10.0;
+	int thresh = 7.0;
 	Mat frame;
 	
 #if GPU
@@ -40,7 +40,8 @@ int main(int argc, char** argv){
 	cv::gpu::DeviceInfo info;
 	cv::gpu::setDevice(0);
 	gpu::FAST_GPU gpuFastDetector(thresh);
-	gpu::SURF_GPU surf(thresh, 4, 2, true, 0.01f, false);
+	gpu::SURF_GPU surf(thresh);//, 4, 2, true, 0.01f, false);
+	
 		
 /*	cv::Mat src_host = cv::imread("city_1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
 	cv::gpu::GpuMat dst1, src1;
@@ -65,7 +66,7 @@ int main(int argc, char** argv){
 
 		vector<float> test;
 		int ii = 0;
-		gpu::GpuMat descriptors, descriptors_keyframe, keypoints, first_keypoints; // Have to be in scope
+		gpu::GpuMat descriptors, descriptors_keyframe, GPU_keypoints, GPU_first_keypoints; // Have to be in scope
 		for ( ; ; ){
 			ii++;
 			capture >> frame;
@@ -77,41 +78,89 @@ int main(int argc, char** argv){
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
 			gpu::GpuMat src;//kps, src, empty;
 			src.upload(frame);
-			gpuFastDetector(src, keypoints, keypoints);
+			//gpuFastDetector(src, GPU_keypoints, GPU_keypoints);
 			double detector_end = time(&tim);
 			
-			const int nFeatures = keypoints.cols;
+			const int nFeatures = GPU_keypoints.cols;
 			
 			gpu::GpuMat empty;
-			surf(src, empty, keypoints, descriptors, true);
+			surf(src, gpu::GpuMat(), GPU_keypoints, descriptors, true);
 			double extractor_end = time(&tim);
 			cout << "GPU descriptors size is " << descriptors.cols << " " <<  descriptors.rows << endl;
 			
 			if (!started){
 				started = true;
-				keypoints.copyTo(first_keypoints);
+				GPU_keypoints.copyTo(GPU_first_keypoints);
 				descriptors.copyTo(descriptors_keyframe);
 			}else{ // BF Matching
 			
 				vector< vector< DMatch > > doubleMatches;
 				vector< DMatch > matches;
 				vector< DMatch > good_matches;
-				gpu::BruteForceMatcher_GPU_base matcher;
+				gpu::BruteForceMatcher_GPU< L2<float> > matcher;
 				
 			//	BFMatcher matcher;
+				gpu::GpuMat trainIdx, distance, allDist;
 				matcher.knnMatch( descriptors, descriptors_keyframe, doubleMatches, 2 );
-				double ratio = 0.8;
+				
+				for (int i = 0; i < doubleMatches.size(); i++) {
+					cout << doubleMatches[i][0].distance << "/" << doubleMatches[i][1].distance << ", ";
+				}
+				cout << endl;
+				
+				/*double ratio = 0.8;
 				for (int i = 0; i < doubleMatches.size(); i++) {
 					if (doubleMatches[i][0].distance < ratio * 
 						doubleMatches[i][1].distance){
 					good_matches.push_back(doubleMatches[i][0]);
 					}
 				}
-			//	vector<Point2d> matched_kps_moved, matched_kps_keyframe;
-			//	for( int i = 0; i < good_matches.size(); i++ ){
-			//	  matched_kps_moved.push_back( keypoints[ good_matches[i].queryIdx ].pt );  // Left frame
-			//	  matched_kps_keyframe.push_back( first_keypoints[ good_matches[i].trainIdx ].pt );
-			//	}
+				vector<Point2d> matched_kps_moved, matched_kps_keyframe;
+				vector<KeyPoint> keypoints, first_keypoints;
+				
+				gpuFastDetector.downloadKeypoints(GPU_keypoints, keypoints);
+				gpuFastDetector.downloadKeypoints(GPU_first_keypoints, first_keypoints);
+				*/
+				
+			/*	cout << "Downloading keypoints " << endl;
+				cout << "KP size " << keypoints.size() << endl;
+				cout << "First size " << first_keypoints.size() << endl;
+				cout << "Good match size "<< good_matches.size() << endl;
+				for (int i = 0; i < good_matches.size(); i++ ){
+					cout << good_matches[i].queryIdx << "/"<< good_matches[i].trainIdx << ", ";
+				}
+				cout << endl;*/
+				
+				
+				/*for( int i = 0; i < good_matches.size(); i++ ){
+				  matched_kps_moved.push_back( keypoints[ good_matches[i].queryIdx ].pt );  // Left frame
+				  matched_kps_keyframe.push_back( first_keypoints[ good_matches[i].trainIdx ].pt );
+				}*/
+				/*if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
+					std::vector<uchar> status; 
+	
+					double fMatP1 = 1.0;
+					double fMatP2 = 0.995;
+		
+				// Use RANSAC and the fundamental matrix to take out points that don't fit geometrically
+					findFundamentalMat(matched_kps_moved, matched_kps_keyframe,
+						CV_FM_RANSAC, fMatP1, fMatP2, status);
+				}
+				*/
+				
+		/*		double ratio = 0.8;
+				for (int i = 0; i < doubleMatches.size(); i++) {
+					if (doubleMatches[i][0].distance < ratio * 
+						doubleMatches[i][1].distance){
+					good_matches.push_back(doubleMatches[i][0]);
+					}
+				}
+				
+				vector<Point2d> matched_kps_moved, matched_kps_keyframe;
+				for( int i = 0; i < good_matches.size(); i++ ){
+				  matched_kps_moved.push_back( keypoints[ good_matches[i].queryIdx ].pt );  // Left frame
+				  matched_kps_keyframe.push_back( first_keypoints[ good_matches[i].trainIdx ].pt );
+			//	}*/
 			//	if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
 			//		std::vector<uchar> status; 
 	
@@ -142,7 +191,7 @@ int main(int argc, char** argv){
 			extractor_total += extractor_time;
 			numFrames++;
 			src.release(); // Release the memory for the GPU.
-			keypoints.release();
+			GPU_keypoints.release();
 		//	descriptors1GPU.release();
 			
 		}
@@ -212,6 +261,12 @@ int main(int argc, char** argv){
 				vector< DMatch > good_matches;
 				BFMatcher matcher;
 				matcher.knnMatch( descriptors, descriptors_keyframe, doubleMatches, 2 );
+				
+				for (int i = 0; i < doubleMatches.size(); i++) {
+					cout << doubleMatches[i][0].distance << "/" <<  doubleMatches[i][1].distance << ", ";
+				}
+				cout << endl;
+				
 				double ratio = 0.8;
 				for (int i = 0; i < doubleMatches.size(); i++) {
 					if (doubleMatches[i][0].distance < ratio * 
@@ -260,7 +315,7 @@ int main(int argc, char** argv){
 	return 0;
 }
 
-
+#if(GPU)
 void ensureSizeIsEnough(int rows, int cols, int type, cv::gpu::GpuMat& m)
 {
     if (m.empty() || m.type() != type || m.data != m.datastart)
@@ -285,3 +340,4 @@ void ensureSizeIsEnough(int rows, int cols, int type, cv::gpu::GpuMat& m)
         }
     }
 }
+#endif

@@ -27,7 +27,7 @@ inline double time(timeval *tim){
 int main(int argc, char** argv){
 	
 	if (argc < 2){
-		cout << "Insufficient args; usage ./cam <input file>\n";
+		cout << "Insufficient args; usage ./bench <input file>\n";
 		exit(0);
 	}
 	
@@ -40,9 +40,8 @@ int main(int argc, char** argv){
 	cv::gpu::DeviceInfo info;
 	cv::gpu::setDevice(0);
 	gpu::FAST_GPU gpuFastDetector(thresh);
-	gpu::SURF_GPU surf(thresh);//, 4, 2, true, 0.01f, false);
+	gpu::SURF_GPU surf(thresh, 4, 2, true, 0.01f, false);
 	
-		
 /*	cv::Mat src_host = cv::imread("city_1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
 	cv::gpu::GpuMat dst1, src1;
 	src1.upload(src_host);
@@ -52,6 +51,7 @@ int main(int argc, char** argv){
 
 //TODO: Decide where to put the start timer.
 	for (int i = 0; i < 1; i++){
+		// Stats info
 		double total = 0.0;
 		double max = 0.0;
 		double detector_total = 0.0;
@@ -59,6 +59,8 @@ int main(int argc, char** argv){
 		double min = 100.0;
 		bool started = false;
 		int numFrames = 0;
+		
+		// Open the video and catch if it's not a video.
 		VideoCapture capture(argv[1]);
 		if (!capture.isOpened() )
 			throw "Error when opening video file.\n";
@@ -78,12 +80,15 @@ int main(int argc, char** argv){
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
 			gpu::GpuMat src;//kps, src, empty;
 			src.upload(frame);
-			gpuFastDetector(src, GPU_keypoints, GPU_keypoints);
+			gpuFastDetector(src, gpu::GpuMat(), GPU_keypoints);
 			double detector_end = time(&tim);
 			
 			const int nFeatures = GPU_keypoints.cols;
 			
-			gpu::GpuMat empty;
+			vector<KeyPoint> vecKps;
+			gpuFastDetector.downloadKeypoints(GPU_keypoints, vecKps);
+			surf.uploadKeypoints(vecKps, GPU_keypoints);
+			
 			surf(src, gpu::GpuMat(), GPU_keypoints, descriptors, true);
 			double extractor_end = time(&tim);
 			cout << "GPU descriptors size is " << descriptors.cols << " " <<  descriptors.rows << endl;
@@ -95,32 +100,37 @@ int main(int argc, char** argv){
 			}else{ // BF Matching
 			
 				vector< vector< DMatch > > doubleMatches;
-				vector< DMatch > matches;
+			//	vector< DMatch > matches;
 				vector< DMatch > good_matches;
 				gpu::BruteForceMatcher_GPU< L2<float> > matcher;
 				
 			//	BFMatcher matcher;
-				gpu::GpuMat trainIdx, distance, allDist;
 				matcher.knnMatch( descriptors, descriptors_keyframe, doubleMatches, 2 );
 				
-				for (int i = 0; i < doubleMatches.size(); i++) {
+				/*for (int i = 0; i < doubleMatches.size(); i++) {
 					cout << doubleMatches[i][0].distance << "/" << doubleMatches[i][1].distance << ", ";
 				}
-				cout << endl;
+				cout << endl;*/
 				
-				/*double ratio = 0.8;
+				double ratio = 0.8;
 				for (int i = 0; i < doubleMatches.size(); i++) {
 					if (doubleMatches[i][0].distance < ratio * 
 						doubleMatches[i][1].distance){
 					good_matches.push_back(doubleMatches[i][0]);
 					}
 				}
+				
 				vector<Point2d> matched_kps_moved, matched_kps_keyframe;
 				vector<KeyPoint> keypoints, first_keypoints;
 				
-				gpuFastDetector.downloadKeypoints(GPU_keypoints, keypoints);
-				gpuFastDetector.downloadKeypoints(GPU_first_keypoints, first_keypoints);
-				*/
+				/*for( int i = 0; i < good_matches.size(); i++ ){
+				  matched_kps_moved.push_back( keypoints[ good_matches[i].queryIdx ].pt );  // Left frame
+				  matched_kps_keyframe.push_back( first_keypoints[ good_matches[i].trainIdx ].pt );
+				}*/
+				
+			//	gpuFastDetector.downloadKeypoints(GPU_keypoints, keypoints);
+			//	gpuFastDetector.downloadKeypoints(GPU_first_keypoints, first_keypoints);
+				
 				
 			/*	cout << "Downloading keypoints " << endl;
 				cout << "KP size " << keypoints.size() << endl;
@@ -132,10 +142,6 @@ int main(int argc, char** argv){
 				cout << endl;*/
 				
 				
-				/*for( int i = 0; i < good_matches.size(); i++ ){
-				  matched_kps_moved.push_back( keypoints[ good_matches[i].queryIdx ].pt );  // Left frame
-				  matched_kps_keyframe.push_back( first_keypoints[ good_matches[i].trainIdx ].pt );
-				}*/
 				/*if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
 					std::vector<uchar> status; 
 	

@@ -112,19 +112,28 @@ int main(int argc, char **argv)
     {
         gettimeofday(&t1, NULL);
 
-        cv::gpu::SURF_GPU surf;
-        cv::gpu::GpuMat gpu_grey1(grey1);
-        cv::gpu::GpuMat gpu_grey2(grey2);
+
+        cv::gpu::SURF_GPU surf(100, 4, 2, true, 0.01f, false);
+        cv::gpu::GpuMat gpu_grey1;
+        gpu_grey1.upload(grey1);
+        cv::gpu::GpuMat gpu_grey2;
+        gpu_grey2.upload(grey2);
         cv::gpu::GpuMat gpu_kp1, gpu_kp2;
         cv::gpu::GpuMat gpu_desc1, gpu_desc2;
         cv::gpu::GpuMat gpu_ret_idx, gpu_ret_dist, gpu_all_dist;
         cv::Mat ret_idx, ret_dist;
 
-        surf(gpu_grey1, cv::gpu::GpuMat(), gpu_kp1, gpu_desc1);
+        printf("Size of grey1 is %d\n", gpu_grey1.cols);
+
+        printf("Surf starting...\n");
         surf(gpu_grey2, cv::gpu::GpuMat(), gpu_kp2, gpu_desc2);
+        printf("Surf 2\n");
+        surf(gpu_grey1, cv::gpu::GpuMat(), gpu_kp1, gpu_desc1);
 
         surf.downloadKeypoints(gpu_kp1, kp1);
         surf.downloadKeypoints(gpu_kp2, kp2);
+
+        printf("Surf done\n");
 
         cv::gpu::BruteForceMatcher_GPU < cv::L2<float> > gpu_matcher;
 
@@ -173,7 +182,7 @@ int main(int argc, char **argv)
     printf("GPU SURF: %g ms\n", TimeDiff(t1,t2));
 
     // OpenCV homography
-    {
+   /* {
         gettimeofday(&t1, NULL);
 
         Mat src2(src.size(), 2, CV_32F);
@@ -195,7 +204,7 @@ int main(int argc, char **argv)
 
         gettimeofday(&t2, NULL);
     }
-    printf("RANSAC Homography (OpenCV): %g ms\n", TimeDiff(t1,t2));
+    printf("RANSAC Homography (OpenCV): %g ms\n", TimeDiff(t1,t2));*/
 
     // Homography
     {

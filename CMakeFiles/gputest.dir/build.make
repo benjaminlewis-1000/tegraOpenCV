@@ -34,11 +34,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lewis/gitRepos/tegraOpenCV
+CMAKE_SOURCE_DIR = /home/ubuntu/opencv_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lewis/gitRepos/tegraOpenCV
+CMAKE_BINARY_DIR = /home/ubuntu/opencv_test
 
 # Include any dependencies generated for this target.
 include CMakeFiles/gputest.dir/depend.make
@@ -51,17 +54,17 @@ include CMakeFiles/gputest.dir/flags.make
 
 CMakeFiles/gputest.dir/gputest.cpp.o: CMakeFiles/gputest.dir/flags.make
 CMakeFiles/gputest.dir/gputest.cpp.o: gputest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/gitRepos/tegraOpenCV/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/gputest.dir/gputest.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/gputest.dir/gputest.cpp.o -c /home/lewis/gitRepos/tegraOpenCV/gputest.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/gputest.dir/gputest.cpp.o -c /home/ubuntu/opencv_test/gputest.cpp
 
 CMakeFiles/gputest.dir/gputest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gputest.dir/gputest.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/lewis/gitRepos/tegraOpenCV/gputest.cpp > CMakeFiles/gputest.dir/gputest.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ubuntu/opencv_test/gputest.cpp > CMakeFiles/gputest.dir/gputest.cpp.i
 
 CMakeFiles/gputest.dir/gputest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gputest.dir/gputest.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/lewis/gitRepos/tegraOpenCV/gputest.cpp -o CMakeFiles/gputest.dir/gputest.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ubuntu/opencv_test/gputest.cpp -o CMakeFiles/gputest.dir/gputest.cpp.s
 
 CMakeFiles/gputest.dir/gputest.cpp.o.requires:
 .PHONY : CMakeFiles/gputest.dir/gputest.cpp.o.requires
@@ -81,39 +84,39 @@ gputest_EXTERNAL_OBJECTS =
 
 gputest: CMakeFiles/gputest.dir/gputest.cpp.o
 gputest: CMakeFiles/gputest.dir/build.make
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_ts.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_nonfree.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_nonfree.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-gputest: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
+gputest: /usr/local/lib/libopencv_videostab.so.2.4.11
+gputest: /usr/local/lib/libopencv_video.so.2.4.11
+gputest: /usr/local/lib/libopencv_ts.a
+gputest: /usr/local/lib/libopencv_superres.so.2.4.11
+gputest: /usr/local/lib/libopencv_stitching.so.2.4.11
+gputest: /usr/local/lib/libopencv_photo.so.2.4.11
+gputest: /usr/local/lib/libopencv_ocl.so.2.4.11
+gputest: /usr/local/lib/libopencv_objdetect.so.2.4.11
+gputest: /usr/local/lib/libopencv_nonfree.so.2.4.11
+gputest: /usr/local/lib/libopencv_ml.so.2.4.11
+gputest: /usr/local/lib/libopencv_legacy.so.2.4.11
+gputest: /usr/local/lib/libopencv_imgproc.so.2.4.11
+gputest: /usr/local/lib/libopencv_highgui.so.2.4.11
+gputest: /usr/local/lib/libopencv_gpu.so.2.4.11
+gputest: /usr/local/lib/libopencv_flann.so.2.4.11
+gputest: /usr/local/lib/libopencv_features2d.so.2.4.11
+gputest: /usr/local/lib/libopencv_core.so.2.4.11
+gputest: /usr/local/lib/libopencv_contrib.so.2.4.11
+gputest: /usr/local/lib/libopencv_calib3d.so.2.4.11
+gputest: /usr/local/lib/libopencv_nonfree.so.2.4.11
+gputest: /usr/local/lib/libopencv_ocl.so.2.4.11
+gputest: /usr/local/lib/libopencv_gpu.so.2.4.11
+gputest: /usr/local/lib/libopencv_photo.so.2.4.11
+gputest: /usr/local/lib/libopencv_objdetect.so.2.4.11
+gputest: /usr/local/lib/libopencv_legacy.so.2.4.11
+gputest: /usr/local/lib/libopencv_video.so.2.4.11
+gputest: /usr/local/lib/libopencv_ml.so.2.4.11
+gputest: /usr/local/lib/libopencv_calib3d.so.2.4.11
+gputest: /usr/local/lib/libopencv_features2d.so.2.4.11
+gputest: /usr/local/lib/libopencv_highgui.so.2.4.11
+gputest: /usr/local/lib/libopencv_imgproc.so.2.4.11
+gputest: /usr/local/lib/libopencv_flann.so.2.4.11
+gputest: /usr/local/lib/libopencv_core.so.2.4.11
 gputest: CMakeFiles/gputest.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable gputest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gputest.dir/link.txt --verbose=$(VERBOSE)
@@ -130,6 +133,6 @@ CMakeFiles/gputest.dir/clean:
 .PHONY : CMakeFiles/gputest.dir/clean
 
 CMakeFiles/gputest.dir/depend:
-	cd /home/lewis/gitRepos/tegraOpenCV && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lewis/gitRepos/tegraOpenCV /home/lewis/gitRepos/tegraOpenCV /home/lewis/gitRepos/tegraOpenCV /home/lewis/gitRepos/tegraOpenCV /home/lewis/gitRepos/tegraOpenCV/CMakeFiles/gputest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/opencv_test && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test/CMakeFiles/gputest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/gputest.dir/depend
 

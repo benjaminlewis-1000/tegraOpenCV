@@ -295,3 +295,17 @@
 
 1310743323 /home/ubuntu/Desktop/CUDA_RANSAC_Homography/CUDA_SVD.cu
 
+1449194473 source:/home/ubuntu/Desktop/CUDA_RANSAC_Homography/main.cpp
+	<sys/time.h>
+	<cstdio>
+	<cmath>
+	<vector>
+	<numeric>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/features2d/features2d.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/calib3d/calib3d.hpp>
+	<opencv2/gpu/gpu.hpp>
+	<opencv2/nonfree/gpu.hpp>
+	"CUDA_RANSAC_Homography.h"
+

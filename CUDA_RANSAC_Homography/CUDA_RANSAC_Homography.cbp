@@ -39,6 +39,7 @@
 			<Add library="opencv_calib3d" />
 			<Add library="opencv_gpu" />
 			<Add library="cudart" />
+			<Add library="opencv_nonfree" />
 			<Add directory="/usr/local/cuda/lib64" />
 		</Linker>
 		<Unit filename="CUDA_RANSAC_Homography.cu">

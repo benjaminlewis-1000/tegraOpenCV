@@ -46,11 +46,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lewis/gitRepos/tegraOpenCV
+CMAKE_SOURCE_DIR = /home/ubuntu/opencv_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lewis/gitRepos/tegraOpenCV
+CMAKE_BINARY_DIR = /home/ubuntu/opencv_test
 
 #=============================================================================
 # Target rules for target CMakeFiles/bench.dir
@@ -59,7 +62,7 @@ CMAKE_BINARY_DIR = /home/lewis/gitRepos/tegraOpenCV
 CMakeFiles/bench.dir/all:
 	$(MAKE) -f CMakeFiles/bench.dir/build.make CMakeFiles/bench.dir/depend
 	$(MAKE) -f CMakeFiles/bench.dir/build.make CMakeFiles/bench.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/gitRepos/tegraOpenCV/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  1
 	@echo "Built target bench"
 .PHONY : CMakeFiles/bench.dir/all
 
@@ -69,9 +72,9 @@ all: CMakeFiles/bench.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bench.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/bench.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 0
 .PHONY : CMakeFiles/bench.dir/rule
 
 # Convenience name for target.
@@ -94,7 +97,7 @@ clean: CMakeFiles/bench.dir/clean
 CMakeFiles/cam.dir/all:
 	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/depend
 	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/gitRepos/tegraOpenCV/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  2
 	@echo "Built target cam"
 .PHONY : CMakeFiles/cam.dir/all
 
@@ -104,9 +107,9 @@ all: CMakeFiles/cam.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cam.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cam.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 0
 .PHONY : CMakeFiles/cam.dir/rule
 
 # Convenience name for target.
@@ -129,7 +132,7 @@ clean: CMakeFiles/cam.dir/clean
 CMakeFiles/gputest.dir/all:
 	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/depend
 	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/gitRepos/tegraOpenCV/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  3
 	@echo "Built target gputest"
 .PHONY : CMakeFiles/gputest.dir/all
 
@@ -139,9 +142,9 @@ all: CMakeFiles/gputest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gputest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gputest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 0
 .PHONY : CMakeFiles/gputest.dir/rule
 
 # Convenience name for target.
@@ -164,7 +167,7 @@ clean: CMakeFiles/gputest.dir/clean
 CMakeFiles/test.dir/all:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/depend
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/gitRepos/tegraOpenCV/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  4
 	@echo "Built target test"
 .PHONY : CMakeFiles/test.dir/all
 
@@ -174,9 +177,9 @@ all: CMakeFiles/test.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/gitRepos/tegraOpenCV/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 0
 .PHONY : CMakeFiles/test.dir/rule
 
 # Convenience name for target.

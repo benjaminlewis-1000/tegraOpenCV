@@ -14,6 +14,7 @@ Getting the Jetson up and running:
 	-sudo ln -s /usr/local/cuda-6.5/lib/libcudart.so /usr/local/lib
 	-sudo ln -s /usr/local/cuda-6.5/lib/libcufft.so /usr/local/lib
 	-sudo ln -s /usr/local/cuda-6.5/lib/libnpp*.so /usr/local/lib
+	-(In Ubuntu on x86, I had to link all the ocntents of /usr/local/cuda-*.*/lib64 to /usr/lib)
 -Get the directory of armhf ueye drivers
 -rsync the drivers to their proper locations
 -sudo apt-get install libqt4-qt3support to get ueyedemo running
@@ -32,3 +33,9 @@ Getting the Jetson up and running:
 	-libraries_install.sh
 	-Make homest and levmar (may not need anymore)
 	-database_install.sh
+
+## NEW INFO:
+
+-Do the ROS install first, then uninstall OpenCV with:
+	sudo find / -name "*opencv*" -exec rm -rf {} \;
+-This should be a clean install. It will torch any directory with opencv in the name. 

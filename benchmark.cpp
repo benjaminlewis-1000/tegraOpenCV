@@ -17,8 +17,6 @@
 using namespace cv;
 using namespace std;
 
-void ensureSizeIsEnough(int rows, int cols, int type, cv::gpu::GpuMat& m);
-
 inline double time(timeval *tim){
 	gettimeofday(tim, NULL);
 	return (tim->tv_sec + (tim->tv_usec/1000000.0) );
@@ -321,29 +319,3 @@ int main(int argc, char** argv){
 	return 0;
 }
 
-#if(GPU)
-void ensureSizeIsEnough(int rows, int cols, int type, cv::gpu::GpuMat& m)
-{
-    if (m.empty() || m.type() != type || m.data != m.datastart)
-        m.create(rows, cols, type);
-    else
-    {
-        const size_t esz = m.elemSize();
-        const ptrdiff_t delta2 = m.dataend - m.datastart;
-
-        const size_t minstep = m.cols * esz;
-
-        Size wholeSize;
-        wholeSize.height = std::max(static_cast<int>((delta2 - minstep) / m.step + 1), m.rows);
-        wholeSize.width = std::max(static_cast<int>((delta2 - m.step * (wholeSize.height - 1)) / esz), m.cols);
-
-        if (wholeSize.height < rows || wholeSize.width < cols)
-            m.create(rows, cols, type);
-        else
-        {
-            m.cols = cols;
-            m.rows = rows;
-        }
-    }
-}
-#endif

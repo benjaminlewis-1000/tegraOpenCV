@@ -13,9 +13,11 @@ inline double time(timeval *tim){
 	return (tim->tv_sec + (tim->tv_usec/1000000.0) );
 }
 
+//TODO: Figure out the order that they should be put into the matcher.
+
 int main(int argc, char** argv){
 
-	int thresh = 100.0;
+	int thresh = 25.0;
 	timeval tim;
 	
 	cout << "Initializing Cuda\n";
@@ -94,11 +96,26 @@ int main(int argc, char** argv){
 	// findFundamentalMat.
 	if (good_matches.size() > 0){
 		for( int i = 0; i < good_matches.size(); i++ ){
-		cout << good_matches[i].queryIdx << ", " << good_matches[i].trainIdx << endl;
+		//cout << good_matches[i].queryIdx << ", " << good_matches[i].trainIdx << endl;
 		  matched_kps_moved.push_back( vecKps1[ good_matches[i].queryIdx ].pt );  // Left frame
 		  matched_kps_keyframe.push_back( vecKps2[ good_matches[i].trainIdx ].pt );
 		}
 	}
+	cout << matched_kps_moved.size() << ", " << matched_kps_keyframe.size() << endl;
+	
+	double fmStart = time(&tim);
+	if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
+		std::vector<uchar> status; 
+
+		double fMatP1 = 1.0;
+		double fMatP2 = 0.995;
+
+	// Use RANSAC and the fundamental matrix to take out points that don't fit geometrically
+		findFundamentalMat(matched_kps_moved, matched_kps_keyframe,
+			CV_FM_RANSAC, fMatP1, fMatP2, status);
+	}
+	double fmEnd = time(&tim);
+	cout << "Fund. mat time is " << fmEnd - fmStart << endl;
 
 	
 	return 0;

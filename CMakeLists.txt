@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 2.8)
 project(test)
 
+find_package(CUDA REQUIRED)
+find_package(OpenCV REQUIRED)
+
 add_executable( test test.cpp)
 add_executable( cam camtest.cpp)
 add_executable( bench benchmark.cpp)
-add_executable( gputest gputest.cpp)
+cuda_add_executable( gputest gputest.cpp HomogCUDA/CUDA_RANSAC_Homography.cu)
 
-find_package(OpenCV REQUIRED)
 #find_package(CUDA REQUIRED)
 #	set (CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /usr/local/cuda-6.5/lib)
 

@@ -4,6 +4,7 @@
 #include <opencv2/nonfree/nonfree.hpp>
 #include "opencv2/gpu/gpu.hpp"
 #include "opencv2/nonfree/gpu.hpp"
+#include "HomogCUDA/CUDA_RANSAC_Homography.h"
 
 using namespace cv;
 using namespace std;

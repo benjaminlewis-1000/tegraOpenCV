@@ -1,4 +1,5 @@
 FILE(REMOVE_RECURSE
+  "CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o"
   "CMakeFiles/gputest.dir/gputest.cpp.o"
   "gputest.pdb"
   "gputest"

@@ -52,9 +52,146 @@ include CMakeFiles/gputest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/gputest.dir/flags.make
 
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: HomogCUDA/CUDA_RANSAC_Homography.cu
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: HomogCUDA/CUDA_RANSAC_Homography.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: HomogCUDA/CUDA_SVD.cu
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: HomogCUDA/DataTypes.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/_G_config.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/alloca.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/byteswap-16.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/byteswap.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/endian.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/huge_val.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/huge_valf.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/huge_vall.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/inf.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/local_lim.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/mathcalls.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/mathdef.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/nan.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/posix1_lim.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/posix2_lim.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/pthreadtypes.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/select.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/sigset.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/stdio_lim.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/stdlib-float.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/sys_errlist.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/time.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/timex.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/typesizes.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/waitflags.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/waitstatus.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/wordsize.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/bits/xopen_lim.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/c++/4.8/bits/c++allocator.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/c++/4.8/bits/c++config.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/c++/4.8/bits/cpu_defines.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/c++/4.8/bits/os_defines.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/gnu/stubs-hard.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/gnu/stubs.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/sys/cdefs.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/sys/select.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/sys/sysmacros.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/arm-linux-gnueabihf/sys/types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/assert.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/allocator.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/atomic_lockfree_defines.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/concept_check.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/cpp_type_traits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/exception_defines.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/functexcept.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/memoryfwd.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/move.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/range_access.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_algobase.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_bvector.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_construct.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_iterator.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_iterator_base_funcs.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_iterator_base_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_numeric.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_pair.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_uninitialized.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/stl_vector.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/bits/vector.tcc
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/cmath
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/cstdio
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/cstdlib
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/debug/debug.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/exception
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/ext/alloc_traits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/ext/new_allocator.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/ext/numeric_traits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/ext/type_traits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/new
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/numeric
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/c++/4.8/vector
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/endian.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/features.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/libio.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/limits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/linux/limits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/math.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/stdc-predef.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/stdio.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/stdlib.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/string.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/time.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/wchar.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/include/xlocale.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/lib/gcc/arm-linux-gnueabihf/4.8/include-fixed/limits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/lib/gcc/arm-linux-gnueabihf/4.8/include-fixed/syslimits.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/lib/gcc/arm-linux-gnueabihf/4.8/include/omp.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/lib/gcc/arm-linux-gnueabihf/4.8/include/stdarg.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/lib/gcc/arm-linux-gnueabihf/4.8/include/stddef.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/builtin_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/channel_descriptor.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/common_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/cuda.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/cuda_device_runtime_api.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/cuda_runtime.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/cuda_runtime_api.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/cuda_surface_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/cuda_texture_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/device_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/device_launch_parameters.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/device_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/driver_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/driver_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/host_config.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/host_defines.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/math_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/math_functions_dbl_ptx3.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_11_atomic_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_12_atomic_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_13_double_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_20_atomic_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_20_intrinsics.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_30_intrinsics.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_32_atomic_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_32_intrinsics.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_35_atomic_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/sm_35_intrinsics.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/surface_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/surface_indirect_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/surface_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/texture_fetch_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/texture_indirect_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/texture_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/vector_functions.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: /usr/local/cuda/include/vector_types.h
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: CMakeFiles/gputest.dir/HomogCUDA/gputest_generated_CUDA_RANSAC_Homography.cu.o.cmake
+CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o: HomogCUDA/CUDA_RANSAC_Homography.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o"
+	cd /home/ubuntu/opencv_test/CMakeFiles/gputest.dir/HomogCUDA && /usr/bin/cmake -E make_directory /home/ubuntu/opencv_test/CMakeFiles/gputest.dir/HomogCUDA/.
+	cd /home/ubuntu/opencv_test/CMakeFiles/gputest.dir/HomogCUDA && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/ubuntu/opencv_test/CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o -D generated_cubin_file:STRING=/home/ubuntu/opencv_test/CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o.cubin.txt -P /home/ubuntu/opencv_test/CMakeFiles/gputest.dir/HomogCUDA/gputest_generated_CUDA_RANSAC_Homography.cu.o.cmake
+
 CMakeFiles/gputest.dir/gputest.cpp.o: CMakeFiles/gputest.dir/flags.make
 CMakeFiles/gputest.dir/gputest.cpp.o: gputest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/gputest.dir/gputest.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/gputest.dir/gputest.cpp.o -c /home/ubuntu/opencv_test/gputest.cpp
 
@@ -80,10 +217,13 @@ gputest_OBJECTS = \
 "CMakeFiles/gputest.dir/gputest.cpp.o"
 
 # External object files for target gputest
-gputest_EXTERNAL_OBJECTS =
+gputest_EXTERNAL_OBJECTS = \
+"/home/ubuntu/opencv_test/CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o"
 
 gputest: CMakeFiles/gputest.dir/gputest.cpp.o
+gputest: CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o
 gputest: CMakeFiles/gputest.dir/build.make
+gputest: /usr/local/cuda/lib/libcudart.so
 gputest: /usr/local/lib/libopencv_videostab.so.2.4.11
 gputest: /usr/local/lib/libopencv_video.so.2.4.11
 gputest: /usr/local/lib/libopencv_ts.a
@@ -132,7 +272,7 @@ CMakeFiles/gputest.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/gputest.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/gputest.dir/clean
 
-CMakeFiles/gputest.dir/depend:
+CMakeFiles/gputest.dir/depend: CMakeFiles/gputest.dir/HomogCUDA/./gputest_generated_CUDA_RANSAC_Homography.cu.o
 	cd /home/ubuntu/opencv_test && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test/CMakeFiles/gputest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/gputest.dir/depend
 

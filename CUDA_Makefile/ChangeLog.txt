@@ -1,0 +1,8 @@
+2012-07-06
+    * CUDA_RANSAC_Homography 1.1.1 released
+    * Fixed small bug in normalisation
+
+2011-07-18
+    * CUDA_RANSAC_Homography 1.1 released
+    * Removed FAST feature with SURF GPU
+    * Replaced SVD code with GNU GSL SVD code

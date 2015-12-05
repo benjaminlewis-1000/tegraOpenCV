@@ -132,7 +132,7 @@ clean: CMakeFiles/cam.dir/clean
 CMakeFiles/gputest.dir/all:
 	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/depend
 	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  3 4
 	@echo "Built target gputest"
 .PHONY : CMakeFiles/gputest.dir/all
 
@@ -142,7 +142,7 @@ all: CMakeFiles/gputest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gputest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gputest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 0
 .PHONY : CMakeFiles/gputest.dir/rule
@@ -167,7 +167,7 @@ clean: CMakeFiles/gputest.dir/clean
 CMakeFiles/test.dir/all:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/depend
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles  5
 	@echo "Built target test"
 .PHONY : CMakeFiles/test.dir/all
 

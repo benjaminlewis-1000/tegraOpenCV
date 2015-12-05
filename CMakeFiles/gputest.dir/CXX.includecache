@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/ubuntu/opencv_test/HomogCUDA/CUDA_RANSAC_Homography.h
+vector
+-
+DataTypes.h
+/home/ubuntu/opencv_test/HomogCUDA/DataTypes.h
+
+/home/ubuntu/opencv_test/HomogCUDA/DataTypes.h
+
 /home/ubuntu/opencv_test/gputest.cpp
 iostream
 -
@@ -19,6 +27,8 @@ opencv2/gpu/gpu.hpp
 /home/ubuntu/opencv_test/opencv2/gpu/gpu.hpp
 opencv2/nonfree/gpu.hpp
 /home/ubuntu/opencv_test/opencv2/nonfree/gpu.hpp
+HomogCUDA/CUDA_RANSAC_Homography.h
+/home/ubuntu/opencv_test/HomogCUDA/CUDA_RANSAC_Homography.h
 
 /usr/local/include/opencv2/calib3d/calib3d.hpp
 opencv2/core/core.hpp

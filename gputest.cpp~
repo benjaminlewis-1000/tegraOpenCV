@@ -4,6 +4,7 @@
 #include <opencv2/nonfree/nonfree.hpp>
 #include "opencv2/gpu/gpu.hpp"
 #include "opencv2/nonfree/gpu.hpp"
+#include "CUDA_RANSAC_Homography.h"
 
 using namespace cv;
 using namespace std;
@@ -12,6 +13,8 @@ inline double time(timeval *tim){
 	gettimeofday(tim, NULL);
 	return (tim->tv_sec + (tim->tv_usec/1000000.0) );
 }
+
+//TODO: Figure out the order that they should be put into the matcher.
 
 int main(int argc, char** argv){
 

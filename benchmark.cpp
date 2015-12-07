@@ -56,7 +56,7 @@ int main(int argc, char** argv){
 	}
 	
 	timeval tim;
-	int thresh = 7.0;
+	int thresh = 20.0;
 	Mat frame;
 	
 #if GPU

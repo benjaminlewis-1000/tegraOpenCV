@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/observer/tegraOpenCV/test.cpp
+iostream
+-
+opencv2/opencv.hpp
+/home/observer/tegraOpenCV/opencv2/opencv.hpp
+opencv2/gpu/gpu.hpp
+/home/observer/tegraOpenCV/opencv2/gpu/gpu.hpp
+sys/time.h
+-
+opencv2/nonfree/nonfree.hpp
+-
+

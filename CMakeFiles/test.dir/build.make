@@ -26,22 +26,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/local/bin/ccmake
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/tegraOpenCV
+CMAKE_SOURCE_DIR = /home/observer/tegraOpenCV
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/benjamin/gitRepos/tegraOpenCV
+CMAKE_BINARY_DIR = /home/observer/tegraOpenCV
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test.dir/depend.make
@@ -54,17 +51,17 @@ include CMakeFiles/test.dir/flags.make
 
 CMakeFiles/test.dir/test.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/test.cpp.o: test.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/tegraOpenCV/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/observer/tegraOpenCV/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/test.dir/test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /home/benjamin/gitRepos/tegraOpenCV/test.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /home/observer/tegraOpenCV/test.cpp
 
 CMakeFiles/test.dir/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/benjamin/gitRepos/tegraOpenCV/test.cpp > CMakeFiles/test.dir/test.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/observer/tegraOpenCV/test.cpp > CMakeFiles/test.dir/test.cpp.i
 
 CMakeFiles/test.dir/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/benjamin/gitRepos/tegraOpenCV/test.cpp -o CMakeFiles/test.dir/test.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/observer/tegraOpenCV/test.cpp -o CMakeFiles/test.dir/test.cpp.s
 
 CMakeFiles/test.dir/test.cpp.o.requires:
 .PHONY : CMakeFiles/test.dir/test.cpp.o.requires
@@ -133,6 +130,6 @@ CMakeFiles/test.dir/clean:
 .PHONY : CMakeFiles/test.dir/clean
 
 CMakeFiles/test.dir/depend:
-	cd /home/benjamin/gitRepos/tegraOpenCV && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/observer/tegraOpenCV && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/observer/tegraOpenCV /home/observer/tegraOpenCV /home/observer/tegraOpenCV /home/observer/tegraOpenCV /home/observer/tegraOpenCV/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test.dir/depend
 

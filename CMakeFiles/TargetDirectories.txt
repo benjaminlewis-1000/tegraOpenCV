@@ -1,3 +1,3 @@
-/home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/bench.dir
-/home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/cam.dir
-/home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/test.dir
+/home/observer/tegraOpenCV/CMakeFiles/bench.dir
+/home/observer/tegraOpenCV/CMakeFiles/cam.dir
+/home/observer/tegraOpenCV/CMakeFiles/test.dir

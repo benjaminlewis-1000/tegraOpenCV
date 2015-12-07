@@ -30,22 +30,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+CMAKE_EDIT_COMMAND = /usr/local/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/opencv_test
+CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/tegraOpenCV
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/opencv_test
+CMAKE_BINARY_DIR = /home/benjamin/gitRepos/tegraOpenCV
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/ubuntu/opencv_test
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -63,7 +63,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles /home/ubuntu/opencv_test/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/tegraOpenCV/CMakeFiles /home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/opencv_test/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/tegraOpenCV/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -126,19 +126,6 @@ cam: cmake_check_build_system
 cam/fast:
 	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/build
 .PHONY : cam/fast
-
-#=============================================================================
-# Target rules for targets named gputest
-
-# Build rule for target.
-gputest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gputest
-.PHONY : gputest
-
-# fast build rule for target.
-gputest/fast:
-	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/build
-.PHONY : gputest/fast
 
 #=============================================================================
 # Target rules for targets named test
@@ -201,30 +188,6 @@ camtest.cpp.s:
 	$(MAKE) -f CMakeFiles/cam.dir/build.make CMakeFiles/cam.dir/camtest.cpp.s
 .PHONY : camtest.cpp.s
 
-gputest.o: gputest.cpp.o
-.PHONY : gputest.o
-
-# target to build an object file
-gputest.cpp.o:
-	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/gputest.cpp.o
-.PHONY : gputest.cpp.o
-
-gputest.i: gputest.cpp.i
-.PHONY : gputest.i
-
-# target to preprocess a source file
-gputest.cpp.i:
-	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/gputest.cpp.i
-.PHONY : gputest.cpp.i
-
-gputest.s: gputest.cpp.s
-.PHONY : gputest.s
-
-# target to generate assembly for a file
-gputest.cpp.s:
-	$(MAKE) -f CMakeFiles/gputest.dir/build.make CMakeFiles/gputest.dir/gputest.cpp.s
-.PHONY : gputest.cpp.s
-
 test.o: test.cpp.o
 .PHONY : test.o
 
@@ -258,7 +221,6 @@ help:
 	@echo "... bench"
 	@echo "... cam"
 	@echo "... edit_cache"
-	@echo "... gputest"
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... benchmark.o"
@@ -267,9 +229,6 @@ help:
 	@echo "... camtest.o"
 	@echo "... camtest.i"
 	@echo "... camtest.s"
-	@echo "... gputest.o"
-	@echo "... gputest.i"
-	@echo "... gputest.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

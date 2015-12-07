@@ -26,22 +26,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+CMAKE_EDIT_COMMAND = /usr/local/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/opencv_test
+CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/tegraOpenCV
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/opencv_test
+CMAKE_BINARY_DIR = /home/benjamin/gitRepos/tegraOpenCV
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/test.dir/flags.make
 
 CMakeFiles/test.dir/test.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/test.cpp.o: test.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/opencv_test/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/tegraOpenCV/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/test.dir/test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /home/ubuntu/opencv_test/test.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /home/benjamin/gitRepos/tegraOpenCV/test.cpp
 
 CMakeFiles/test.dir/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ubuntu/opencv_test/test.cpp > CMakeFiles/test.dir/test.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/benjamin/gitRepos/tegraOpenCV/test.cpp > CMakeFiles/test.dir/test.cpp.i
 
 CMakeFiles/test.dir/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ubuntu/opencv_test/test.cpp -o CMakeFiles/test.dir/test.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/benjamin/gitRepos/tegraOpenCV/test.cpp -o CMakeFiles/test.dir/test.cpp.s
 
 CMakeFiles/test.dir/test.cpp.o.requires:
 .PHONY : CMakeFiles/test.dir/test.cpp.o.requires
@@ -84,39 +84,39 @@ test_EXTERNAL_OBJECTS =
 
 test: CMakeFiles/test.dir/test.cpp.o
 test: CMakeFiles/test.dir/build.make
-test: /usr/local/lib/libopencv_videostab.so.2.4.11
-test: /usr/local/lib/libopencv_video.so.2.4.11
-test: /usr/local/lib/libopencv_ts.a
-test: /usr/local/lib/libopencv_superres.so.2.4.11
-test: /usr/local/lib/libopencv_stitching.so.2.4.11
-test: /usr/local/lib/libopencv_photo.so.2.4.11
-test: /usr/local/lib/libopencv_ocl.so.2.4.11
-test: /usr/local/lib/libopencv_objdetect.so.2.4.11
-test: /usr/local/lib/libopencv_nonfree.so.2.4.11
-test: /usr/local/lib/libopencv_ml.so.2.4.11
-test: /usr/local/lib/libopencv_legacy.so.2.4.11
-test: /usr/local/lib/libopencv_imgproc.so.2.4.11
-test: /usr/local/lib/libopencv_highgui.so.2.4.11
-test: /usr/local/lib/libopencv_gpu.so.2.4.11
-test: /usr/local/lib/libopencv_flann.so.2.4.11
-test: /usr/local/lib/libopencv_features2d.so.2.4.11
-test: /usr/local/lib/libopencv_core.so.2.4.11
-test: /usr/local/lib/libopencv_contrib.so.2.4.11
-test: /usr/local/lib/libopencv_calib3d.so.2.4.11
-test: /usr/local/lib/libopencv_nonfree.so.2.4.11
-test: /usr/local/lib/libopencv_ocl.so.2.4.11
-test: /usr/local/lib/libopencv_gpu.so.2.4.11
-test: /usr/local/lib/libopencv_photo.so.2.4.11
-test: /usr/local/lib/libopencv_objdetect.so.2.4.11
-test: /usr/local/lib/libopencv_legacy.so.2.4.11
-test: /usr/local/lib/libopencv_video.so.2.4.11
-test: /usr/local/lib/libopencv_ml.so.2.4.11
-test: /usr/local/lib/libopencv_calib3d.so.2.4.11
-test: /usr/local/lib/libopencv_features2d.so.2.4.11
-test: /usr/local/lib/libopencv_highgui.so.2.4.11
-test: /usr/local/lib/libopencv_imgproc.so.2.4.11
-test: /usr/local/lib/libopencv_flann.so.2.4.11
-test: /usr/local/lib/libopencv_core.so.2.4.11
+test: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_ts.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_nonfree.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_nonfree.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
+test: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
 test: CMakeFiles/test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)
@@ -133,6 +133,6 @@ CMakeFiles/test.dir/clean:
 .PHONY : CMakeFiles/test.dir/clean
 
 CMakeFiles/test.dir/depend:
-	cd /home/ubuntu/opencv_test && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test /home/ubuntu/opencv_test/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/benjamin/gitRepos/tegraOpenCV && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV /home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test.dir/depend
 

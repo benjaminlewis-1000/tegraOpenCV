@@ -7,33 +7,27 @@ SET(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 SET(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "CMakeFiles/2.8.12.2/CMakeCCompiler.cmake"
-  "CMakeFiles/2.8.12.2/CMakeCXXCompiler.cmake"
-  "CMakeFiles/2.8.12.2/CMakeSystem.cmake"
-  "CMakeFiles/gputest.dir/HomogCUDA/gputest_generated_CUDA_RANSAC_Homography.cu.o.depend"
+  "CMakeFiles/2.8.12.1/CMakeCCompiler.cmake"
+  "CMakeFiles/2.8.12.1/CMakeCXXCompiler.cmake"
+  "CMakeFiles/2.8.12.1/CMakeSystem.cmake"
   "CMakeLists.txt"
-  "/usr/local/share/OpenCV/OpenCVConfig-version.cmake"
-  "/usr/local/share/OpenCV/OpenCVConfig.cmake"
-  "/usr/local/share/OpenCV/OpenCVModules-release.cmake"
-  "/usr/local/share/OpenCV/OpenCVModules.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeCInformation.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeCXXInformation.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeGenericSystem.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeParseArguments.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeSystemSpecificInformation.cmake"
-  "/usr/share/cmake-2.8/Modules/Compiler/GNU-C.cmake"
-  "/usr/share/cmake-2.8/Modules/Compiler/GNU-CXX.cmake"
-  "/usr/share/cmake-2.8/Modules/Compiler/GNU.cmake"
-  "/usr/share/cmake-2.8/Modules/FindCUDA.cmake"
-  "/usr/share/cmake-2.8/Modules/FindCUDA/run_nvcc.cmake"
-  "/usr/share/cmake-2.8/Modules/FindPackageHandleStandardArgs.cmake"
-  "/usr/share/cmake-2.8/Modules/FindPackageMessage.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux-GNU-C.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux-GNU-CXX.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux-GNU.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/UnixPaths.cmake"
+  "/usr/local/share/cmake-2.8/Modules/CMakeCInformation.cmake"
+  "/usr/local/share/cmake-2.8/Modules/CMakeCXXInformation.cmake"
+  "/usr/local/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake"
+  "/usr/local/share/cmake-2.8/Modules/CMakeGenericSystem.cmake"
+  "/usr/local/share/cmake-2.8/Modules/CMakeSystemSpecificInformation.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Compiler/GNU-C.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Compiler/GNU-CXX.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Compiler/GNU.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Platform/Linux-GNU-C.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Platform/Linux-GNU-CXX.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Platform/Linux-GNU.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Platform/Linux.cmake"
+  "/usr/local/share/cmake-2.8/Modules/Platform/UnixPaths.cmake"
+  "/usr/share/OpenCV/OpenCVConfig-version.cmake"
+  "/usr/share/OpenCV/OpenCVConfig.cmake"
+  "/usr/share/OpenCV/OpenCVModules-release.cmake"
+  "/usr/share/OpenCV/OpenCVModules.cmake"
   )
 
 # The corresponding makefile is:
@@ -44,7 +38,6 @@ SET(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 SET(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/gputest.dir/HomogCUDA/gputest_generated_CUDA_RANSAC_Homography.cu.o.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -52,6 +45,5 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/bench.dir/DependInfo.cmake"
   "CMakeFiles/cam.dir/DependInfo.cmake"
-  "CMakeFiles/gputest.dir/DependInfo.cmake"
   "CMakeFiles/test.dir/DependInfo.cmake"
   )

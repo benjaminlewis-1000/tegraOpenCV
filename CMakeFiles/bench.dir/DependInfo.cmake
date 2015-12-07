@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ubuntu/opencv_test/benchmark.cpp" "/home/ubuntu/opencv_test/CMakeFiles/bench.dir/benchmark.cpp.o"
+  "/home/benjamin/gitRepos/tegraOpenCV/benchmark.cpp" "/home/benjamin/gitRepos/tegraOpenCV/CMakeFiles/bench.dir/benchmark.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,9 +14,7 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/local/include/opencv"
-  "/usr/local/include"
-  "/usr/local/cuda/include"
+  "/usr/include/opencv"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

@@ -3,6 +3,7 @@
 #include <sys/time.h>
 #include <opencv2/nonfree/nonfree.hpp>
 #include <fstream>
+#include <string>
 
 //#include "surf.cu"
 
@@ -16,6 +17,7 @@ struct timingStruct{
 	double matcher_time;
 //	double findFundMat_time;
 	double total_time;
+	int num_features;
 	unsigned int frameNum;
 };
 
@@ -32,13 +34,14 @@ void printoutTiming(vector< vector<timingStruct> > times, string filename){
 	vector< timingStruct > runOne = times[0];
 	ofstream output;
 	output.open(filename.c_str());
-	output << "Frame#\tRead_time\tDetector_time\tExtractor_time\tMatcher_time\tTotal_time\n";
+	output << "Frame#\tRead_time\tDetector_time\tExtractor_time\tMatcher_time\tTotal_time\tNum_features(match)\n";
 	for (int i = 1; i < runOne.size(); i++){
 		output << i << "\t" << runOne[i].read_time << "\t" << 
 							   runOne[i].detector_time << "\t" << 
 							   runOne[i].extractor_time << "\t" << 
 							   runOne[i].matcher_time << "\t" << 
 							   runOne[i].total_time << "\t" << 
+							   runOne[i].num_features << "\t" <<
 							   endl;
 	}
 }
@@ -56,27 +59,43 @@ int main(int argc, char** argv){
 	}
 	
 	timeval tim;
-	int thresh = 7.0;
 	Mat frame;
 	
 #if GPU
-	cout << "Initializing Cuda\n";
-	cv::gpu::DeviceInfo info;
-	cv::gpu::setDevice(0);
-	gpu::FAST_GPU gpuFastDetector(thresh);
-	gpu::SURF_GPU surf(thresh, 4, 2, true, 0.01f, false);
-	
-	cv::Mat src_host = cv::imread("city_1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-	cv::gpu::GpuMat dst1, src1;
-	src1.upload(src_host);
-	cv::gpu::threshold(src1,dst1, 128.0, 255.0, CV_THRESH_BINARY);
-	src1.release();
-	dst1.release();
-
-	vector< vector < timingStruct > > aggregateGPU_times;
 	
 //TODO: Decide where to put the start timer.
-	for (int i = 0; i < 1; i++){
+	for (int i = 0; i < 4; i++){
+		
+		int thresh;
+		switch(i){
+			case 0:
+				thresh = 5.0;
+				break;
+			case 1:
+				thresh = 7.0;
+				break;
+			case 2:
+				thresh = 10.0;
+				break;
+			case 3:
+				thresh = 20.0;
+				break;
+		}
+		cout << "Initializing Cuda\n";
+		cv::gpu::DeviceInfo info;
+		cv::gpu::setDevice(0);
+		gpu::FAST_GPU gpuFastDetector(thresh);
+		gpu::SURF_GPU surf(thresh, 4, 2, true, 0.01f, false);
+	
+		cv::Mat src_host = cv::imread("city_1.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+		cv::gpu::GpuMat dst1, src1;
+		src1.upload(src_host);
+		cv::gpu::threshold(src1,dst1, 128.0, 255.0, CV_THRESH_BINARY);
+		src1.release();
+		dst1.release();
+
+		vector< vector < timingStruct > > aggregateGPU_times;
+	
 		// Stats info
 		double total = 0.0;
 		double max = 0.0;
@@ -98,7 +117,8 @@ int main(int argc, char** argv){
 		int ii = 0;
 		gpu::GpuMat descriptors, descriptors_keyframe, GPU_keypoints, GPU_first_keypoints; // Have to be in scope
 		vector<KeyPoint> vecKpsKeyframe;
-		for ( ; ; ){
+		int num_features;
+		for ( ; ;  ){
 			double start, detector_end, extractor_end, matcherStart, matcherEnd, fundamentalMatEnd, readEnd;
 			ii++;
 			start = time(&tim);
@@ -153,6 +173,8 @@ int main(int argc, char** argv){
 					}
 				}
 				
+				num_features = good_matches.size();
+				
 				vector<Point2d> matched_kps_moved, matched_kps_keyframe;
 				vector<KeyPoint> keypoints, first_keypoints;
 				
@@ -191,6 +213,7 @@ int main(int argc, char** argv){
 			tmp.extractor_time = extractor_end - detector_end;
 			tmp.matcher_time = matcherEnd - matcherStart; 
 			tmp.total_time = elapsed;
+			tmp.num_features = num_features;
 		//	tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
 			tmp.frameNum = numFrames++;
 			GPU_times.push_back(tmp);
@@ -201,21 +224,44 @@ int main(int argc, char** argv){
 			GPU_keypoints.release();
 			
 		}
+		cout << "\n\nFinish\n\n";
 		
 		aggregateGPU_times.push_back(GPU_times);
+		
+		 ostringstream ss;
+		 ss << thresh;
+		 string Num = ss.str();	
+		string fileName = (string) "gpuFile_" + Num +  (string) ".csv"; 
+		printoutTiming(aggregateGPU_times, fileName);
 	}
 	
-	printoutTiming(aggregateGPU_times, "gpuFile.csv");
         
 #endif
 
 #if(CPU)
-	FastFeatureDetector detector(thresh);
-	SurfDescriptorExtractor extractor; 
 	
 	vector< vector < timingStruct > > aggregateCPU_times;
-
-	for (int i = 0; i < 1; i++){
+	for (int i = 0; i < 4; i++){
+		
+		int thresh;
+		switch(i){
+			case 0:
+				thresh = 5.0;
+				break;
+			case 1:
+				thresh = 7.0;
+				break;
+			case 2:
+				thresh = 10.0;
+				break;
+			case 3:
+				thresh = 20.0;
+				break;
+		}
+		FastFeatureDetector detector(thresh);
+		SurfDescriptorExtractor extractor; 
+			
+			
 		double total = 0.0;
 		double detector_total = 0.0;
 		double extractor_total = 0.0;
@@ -231,9 +277,9 @@ int main(int argc, char** argv){
 		vector<KeyPoint> keypoints, first_keypoints;
 		
 		vector<timingStruct> CPU_times;
-		
-		for ( ; ; ){
+		for ( int j = 0; j < 10; j++ ){
 			double start = time(&tim);
+			int num_features;
 			capture >> frame;
 			if (frame.empty() )
 				break;
@@ -269,6 +315,7 @@ int main(int argc, char** argv){
 					good_matches.push_back(doubleMatches[i][0]);
 					}
 				}
+				num_features = good_matches.size();
 			
 				vector<Point2d> matched_kps_moved, matched_kps_keyframe;
 				for( int i = 0; i < good_matches.size(); i++ ){
@@ -299,6 +346,7 @@ int main(int argc, char** argv){
 			tmp.extractor_time = extractor_end - detector_end;
 			tmp.matcher_time = matcherEnd - matcherStart; 
 			tmp.total_time = elapsed;
+			tmp.num_features = num_features;
 		//	tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
 			tmp.frameNum = numFrames++;
 			CPU_times.push_back(tmp);
@@ -317,10 +365,14 @@ int main(int argc, char** argv){
 		}
 		aggregateCPU_times.push_back(CPU_times);
 		
+		 ostringstream ss;
+		 ss << thresh;
+		 string Num = ss.str();	
+		string fileName = (string) "cpuFile_" + Num +  (string) ".csv"; 
+		printoutTiming(aggregateCPU_times, fileName);
 		
-		printoutTiming(aggregateCPU_times, "cpuFile.csv");
 		/*cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " 
-			<< total / numFrames << " Detector_only avg: " << detector_total / numFrames
+			<< total / numFrames << " Detector_soonly avg: " << detector_total / numFrames
 			<< " Extractor_only avg: " << extractor_total / numFrames<< endl;*/
 	}
 #endif

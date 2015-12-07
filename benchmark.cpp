@@ -12,7 +12,7 @@ struct timingStruct{
 	double detector_time;
 	double extractor_time;
 	double matcher_time;
-	double findFundMat_time;
+//	double findFundMat_time;
 	unsigned int frameNum;
 };
 
@@ -140,7 +140,7 @@ int main(int argc, char** argv){
 				}
 				matcherEnd = time(&tim);
 							
-				if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
+			/*	if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
 					std::vector<uchar> status; 
 	
 					double fMatP1 = 1.0;
@@ -151,7 +151,7 @@ int main(int argc, char** argv){
 						CV_FM_RANSAC, fMatP1, fMatP2, status);
 				}
 				
-				fundamentalMatEnd = time(&tim);
+				fundamentalMatEnd = time(&tim);*/
 								
 			}
 			
@@ -162,7 +162,7 @@ int main(int argc, char** argv){
 			tmp.detector_time = detector_end - start;
 			tmp.extractor_time = extractor_end - detector_end;
 			tmp.matcher_time = matcherEnd - matcherStart; 
-			tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
+		//	tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
 			tmp.frameNum = numFrames++;
 			GPU_times.push_back(tmp);
 			
@@ -246,7 +246,7 @@ int main(int argc, char** argv){
 				
 				matcherEnd = time(&tim);
 				
-				if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
+			/*	if (! (matched_kps_moved.size() < 4 || matched_kps_keyframe.size() < 4) ){
 					std::vector<uchar> status; 
 	
 					double fMatP1 = 1.0;
@@ -256,7 +256,7 @@ int main(int argc, char** argv){
 					findFundamentalMat(matched_kps_moved, matched_kps_keyframe,
 						CV_FM_RANSAC, fMatP1, fMatP2, status);
 				}
-				fundamentalMatEnd = time(&tim);
+				fundamentalMatEnd = time(&tim);*/
 			}
 			double end = time(&tim);	
 			double elapsed = end - start;
@@ -265,7 +265,7 @@ int main(int argc, char** argv){
 			tmp.detector_time = detector_end - start;
 			tmp.extractor_time = extractor_end - detector_end;
 			tmp.matcher_time = matcherEnd - matcherStart; 
-			tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
+		//	tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
 			tmp.frameNum = numFrames++;
 			CPU_times.push_back(tmp);
 			

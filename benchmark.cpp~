@@ -2,17 +2,20 @@
 #include "opencv2/opencv.hpp"
 #include <sys/time.h>
 #include <opencv2/nonfree/nonfree.hpp>
+#include <fstream>
 
 //#include "surf.cu"
 
-#define GPU 1
+#define GPU 0
 #define CPU !GPU
 
 struct timingStruct{
+	double read_time;
 	double detector_time;
 	double extractor_time;
 	double matcher_time;
 //	double findFundMat_time;
+	double total_time;
 	unsigned int frameNum;
 };
 
@@ -24,6 +27,21 @@ struct timingStruct{
 
 using namespace cv;
 using namespace std;
+
+void printoutTiming(vector< vector<timingStruct> > times, string filename){
+	vector< timingStruct > runOne = times[0];
+	ofstream output;
+	output.open(filename.c_str());
+	output << "Frame#\tRead_time\tDetector_time\tExtractor_time\tMatcher_time\tTotal_time\n";
+	for (int i = 1; i < runOne.size(); i++){
+		output << i << "\t" << runOne[i].read_time << "\t" << 
+							   runOne[i].detector_time << "\t" << 
+							   runOne[i].extractor_time << "\t" << 
+							   runOne[i].matcher_time << "\t" << 
+							   runOne[i].total_time << "\t" << 
+							   endl;
+	}
+}
 
 inline double time(timeval *tim){
 	gettimeofday(tim, NULL);
@@ -79,15 +97,17 @@ int main(int argc, char** argv){
 		vector<float> test;
 		int ii = 0;
 		gpu::GpuMat descriptors, descriptors_keyframe, GPU_keypoints, GPU_first_keypoints; // Have to be in scope
+		vector<KeyPoint> vecKpsKeyframe;
 		for ( ; ; ){
-			double start, detector_end, extractor_end, matcherStart, matcherEnd, fundamentalMatEnd;
+			double start, detector_end, extractor_end, matcherStart, matcherEnd, fundamentalMatEnd, readEnd;
 			ii++;
+			start = time(&tim);
 			capture >> frame;
 			if (frame.empty() ){
 				cout << " Break\n";
 				break;
 			}
-			start = time(&tim);
+			readEnd = time(&tim);
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
 			gpu::GpuMat src;//kps, src, empty;
 			src.upload(frame);
@@ -102,12 +122,13 @@ int main(int argc, char** argv){
 			
 			surf(src, gpu::GpuMat(), GPU_keypoints, descriptors, true);
 			extractor_end = time(&tim);
-			cout << "GPU descriptors size is " << descriptors.cols << " " <<  descriptors.rows << endl;
+		//	cout << "GPU descriptors size is " << descriptors.cols << " " <<  descriptors.rows << endl;
 			
 			if (!started){
 				started = true;
 				GPU_keypoints.copyTo(GPU_first_keypoints);
 				descriptors.copyTo(descriptors_keyframe);
+				vecKpsKeyframe = vecKps;
 			}else{ // BF Matching
 				matcherStart = time(&tim);
 				vector< vector< DMatch > > doubleMatches;
@@ -117,7 +138,7 @@ int main(int argc, char** argv){
 				
 			//	BFMatcher matcher;
 				matcher.knnMatch( descriptors, descriptors_keyframe, doubleMatches, 2 );
-				
+			//	cout << "matched" << endl;
 				/*for (int i = 0; i < doubleMatches.size(); i++) {
 					cout << doubleMatches[i][0].distance << "/" << doubleMatches[i][1].distance << ", ";
 				}
@@ -125,6 +146,7 @@ int main(int argc, char** argv){
 				
 				double ratio = 0.8;
 				for (int i = 0; i < doubleMatches.size(); i++) {
+				//	cout << doubleMatches[i][0].distance << ", " << doubleMatches[i][1].distance << " | ";
 					if (doubleMatches[i][0].distance < ratio * 
 						doubleMatches[i][1].distance){
 					good_matches.push_back(doubleMatches[i][0]);
@@ -134,9 +156,14 @@ int main(int argc, char** argv){
 				vector<Point2d> matched_kps_moved, matched_kps_keyframe;
 				vector<KeyPoint> keypoints, first_keypoints;
 				
+				
+//	cout << "There are " << good_matches.size() << " good matches." << endl;
+		
+	//cout << "Pushing back..." << endl;
+				
 				for( int i = 0; i < good_matches.size(); i++ ){
-				  matched_kps_moved.push_back( keypoints[ good_matches[i].queryIdx ].pt );  // Left frame
-				  matched_kps_keyframe.push_back( first_keypoints[ good_matches[i].trainIdx ].pt );
+				  matched_kps_moved.push_back( vecKps[ good_matches[i].queryIdx ].pt );  // Left frame
+				  matched_kps_keyframe.push_back( vecKpsKeyframe[ good_matches[i].trainIdx ].pt );
 				}
 				matcherEnd = time(&tim);
 							
@@ -159,9 +186,11 @@ int main(int argc, char** argv){
 			double elapsed = end - start;
 			
 			timingStruct tmp;
-			tmp.detector_time = detector_end - start;
+			tmp.read_time = readEnd - start;
+			tmp.detector_time = detector_end - readEnd;
 			tmp.extractor_time = extractor_end - detector_end;
 			tmp.matcher_time = matcherEnd - matcherStart; 
+			tmp.total_time = elapsed;
 		//	tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
 			tmp.frameNum = numFrames++;
 			GPU_times.push_back(tmp);
@@ -174,7 +203,9 @@ int main(int argc, char** argv){
 		}
 		
 		aggregateGPU_times.push_back(GPU_times);
-	}        
+	}
+	
+	printoutTiming(aggregateGPU_times, "gpuFile.csv");
         
 #endif
 
@@ -202,10 +233,11 @@ int main(int argc, char** argv){
 		vector<timingStruct> CPU_times;
 		
 		for ( ; ; ){
+			double start = time(&tim);
 			capture >> frame;
 			if (frame.empty() )
 				break;
-			double start = time(&tim);
+			double readEnd = time(&tim);
 			cvtColor(frame, frame, COLOR_BGR2GRAY);
 			detector.detect(frame, keypoints);
 			double detector_end = time(&tim);
@@ -262,9 +294,11 @@ int main(int argc, char** argv){
 			double elapsed = end - start;
 			
 			timingStruct tmp;
-			tmp.detector_time = detector_end - start;
+			tmp.read_time = readEnd - start;
+			tmp.detector_time = detector_end - readEnd;
 			tmp.extractor_time = extractor_end - detector_end;
 			tmp.matcher_time = matcherEnd - matcherStart; 
+			tmp.total_time = elapsed;
 		//	tmp.findFundMat_time = fundamentalMatEnd - matcherEnd;
 			tmp.frameNum = numFrames++;
 			CPU_times.push_back(tmp);

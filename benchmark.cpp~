@@ -316,6 +316,9 @@ int main(int argc, char** argv){
 			numFrames++;*/
 		}
 		aggregateCPU_times.push_back(CPU_times);
+		
+		
+		printoutTiming(aggregateCPU_times, "cpuFile.csv");
 		/*cout << "Total: " << total << " Max: " << max << " Min: " << min << " Average: " 
 			<< total / numFrames << " Detector_only avg: " << detector_total / numFrames
 			<< " Extractor_only avg: " << extractor_total / numFrames<< endl;*/

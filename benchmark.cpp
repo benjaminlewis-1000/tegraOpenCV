@@ -6,7 +6,7 @@
 
 //#include "surf.cu"
 
-#define GPU 0
+#define GPU 1
 #define CPU !GPU
 
 struct timingStruct{
